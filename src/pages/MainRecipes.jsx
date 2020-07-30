@@ -1,9 +1,7 @@
 import React from 'react';
 
-const MainRecipes = () => {
-  return (
-    <div />
-  );
-}
+const MainRecipes = () => (
+  <div />
+);
 
 export default MainRecipes;
