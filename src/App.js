@@ -3,9 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <div id="meals">
-      
-    </div>
+    <div />
   );
 }
 
