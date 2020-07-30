@@ -26,7 +26,12 @@ const Login = () => {
         onChange={(e) => nomeFunc(e.target.value)}
       />
       <Link to="/comidas">
-        <button data-testid="login-submit-btn" type="submit" disabled={} onClick={() => toSubmit()}>
+        <button
+          data-testid="login-submit-btn"
+          type="submit"
+          disabled={nomeFunc()}
+          onClick={() => toSubmit()}
+        >
           Entrar
         </button>
       </Link>
