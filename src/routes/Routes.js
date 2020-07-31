@@ -9,7 +9,7 @@ const Routes = () => (
     <Switch>
       <Route
         exact path="/comidas"
-        component={MainRecipes}
+        render={(props) => <MainRecipes {...props} type="meal" title="Comidas" />}
       />
       {/* <Route
         exact path="/bebidas"
