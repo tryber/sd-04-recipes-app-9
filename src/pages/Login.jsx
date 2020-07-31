@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  
+
   const checkPassword = (value) => value.length > 6;
 
   const toHandleEmail = (handleEmail) => setState({ ...state, email: handleEmail });
