@@ -1,7 +1,6 @@
 import React from 'react';
 
 function SearchBar() {
-
   return (
     <div>
       <input
@@ -11,7 +10,7 @@ function SearchBar() {
         value={''}
         onChange={() => {}}
       />
-      <label htmlFor="ingredientes">
+      <label htmlFor="Ingredientes">
         <input
           type="radio"
           id="ingredientes"
@@ -31,7 +30,7 @@ function SearchBar() {
         />
         Nome
       </label>
-      <label>
+      <label htmlFor="first-letter">
         <input
           type="radio"
           id="first-letter"
