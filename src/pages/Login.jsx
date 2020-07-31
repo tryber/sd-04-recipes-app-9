@@ -8,7 +8,6 @@ const Login = () => {
   const toSubmit = () => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ email }));
   };
 
   const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
@@ -41,7 +40,7 @@ const Login = () => {
       <Link to="/comidas">
         <button
           data-testid="login-submit-btn"
-          type="submit"
+          type="button"
           disabled={!(checkPassword(password) && checkEmail(email))}
           onClick={() => toSubmit()}
         >
