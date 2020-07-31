@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const Login = () => {
   const [state, setState] = useState({ email: '', password: '' });
@@ -23,8 +21,6 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
-      <Footer />
       <h1>Login</h1>
       <input
         data-testid="email-input"

@@ -41,6 +41,11 @@
   text-align:"center";
 }
 
+.header {
+  display: flex;
+  align-items: center;
+}
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);
