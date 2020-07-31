@@ -15,17 +15,11 @@ const Login = () => {
   const checkPassword = (password) => password.length > 6;
 
   const toHandleEmail = (email) => {
-    setState({
-      ...state,
-      email: email,
-    });
+    setState({ ...state, email });
   };
 
   const toHandlePassword = (password) => {
-    setState({
-      ...state,
-      password,
-    });
+    setState({ ...state, password });
   };
 
   return (
@@ -60,4 +54,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;
