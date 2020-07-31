@@ -37,6 +37,10 @@
   animation: shake 1.5s infinite ease;
 }
 
+.centerIcons {
+  text-align:"center";
+}
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);
