@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
-import { searchRecpipesByName } from '../services/getRecipes';
+import searchRecpipesByName from '../services/getRecipes';
 
 const MainRecipes = ({ type }) => {
   const {
@@ -14,14 +14,19 @@ const MainRecipes = ({ type }) => {
     });
   }, []);
 
-  if (isFetching) return <div><h3>Loading...</h3></div>
+  if (isFetching) return <div><h3>Loading...</h3></div>;
   return (
     <div>
       {recipes.map((recipe, index) => (
-        <p key={index}>{recipe.strMeal}</p>
+        <p key={recipe.strMeal}>{recipe.strMeal}</p>
       ))}
     </div>
   );
+};
+
+MainRecipes.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default MainRecipes;
