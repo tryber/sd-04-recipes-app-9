@@ -5,18 +5,19 @@ const Login = () => {
   const [state, setState] = useState({ email: '', password: '' });
   const { email, password } = state;
 
-  const toSubmit = (email) => {
+  const toSubmit = (mail) => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ email }));
+    localStorage.setItem('user', JSON.stringify({ email: mail }));
   };
 
-  const checkEmail = (email) => email.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  const checkPassword = (password) => password.length > 6;
+  const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  
+  const checkPassword = (value) => value.length > 6;
 
-  const toHandleEmail = (email) => setState({ ...state, email });
+  const toHandleEmail = (handleEmail) => setState({ ...state, email: handleEmail });
 
-  const toHandlePassword = (password) => setState({ ...state, password });
+  const toHandlePassword = (handlePassword) => setState({ ...state, password: handlePassword });
 
   return (
     <div>
