@@ -1,9 +1,41 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Login = () => (
-  <div>
-    <h2>Hello World</h2>
-  </div>
-);
+const Login = () => {
+  const toSubmit = () => {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', { email });
+  };
 
+  return (
+    <div>
+      <h1>Login</h1>
+      <input
+        data-testid="email-input"
+        type="email"
+        placeholder="Email"
+        required
+        onChange={(e) => nomeFunc(e.target.value)}
+      />
+      <input
+        data-testid="password-input"
+        type="password"
+        placeholder="Senha"
+        required
+        onChange={(e) => nomeFunc(e.target.value)}
+      />
+      <Link to="/comidas">
+        <button
+          data-testid="login-submit-btn"
+          type="submit"
+          disabled={nomeFunc()}
+          onClick={() => toSubmit()}
+        >
+          Entrar
+        </button>
+      </Link>
+    </div>
+  );
+};
 export default Login;
