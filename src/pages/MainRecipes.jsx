@@ -29,6 +29,7 @@ const MainRecipes = ({ type, title }) => {
 
 MainRecipes.propTypes = {
   type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default MainRecipes;
