@@ -16,7 +16,7 @@ const Header = ({ title }) => (
   </div>
 );
 
-MainRecipes.propTypes = {
+Header.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
