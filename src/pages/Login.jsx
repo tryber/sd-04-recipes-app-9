@@ -1,60 +1,62 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+const checkEmail = (email) => email.match(/\S+@\S+\.\S+/i);
 
-const checkPassword = (value) => value.length > 6;
+const checkPassword = (password) => (password.length > 6);
 
-const toSubmit = () => {
+const textInput = (state, handleChange, type, placeholder) => (
+  <input
+    type={type}
+    value={state}
+    data-testid={`${type}-input`}
+    onChange={(e) => handleChange(e)}
+    id={type}
+    placeholder={placeholder}
+  />
+);
+
+const saveTokens = () => {
   localStorage.setItem('mealsToken', 1);
   localStorage.setItem('cocktailsToken', 1);
 };
 
-const saveEmail = (mail) => localStorage.setItem('user', JSON.stringify({ email: mail }));
+const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email }));
 
 const submitButton = (state) => (
   <Link to="/comidas">
     <button
-      data-testid="login-submit-btn"
       type="button"
-      disabled={!(checkPassword(state.password) && checkEmail(state.email))}
+      disabled={!(checkEmail(state.email) && checkPassword(state.password))}
+      data-testid="login-submit-btn"
       onClick={() => {
-        toSubmit();
+        saveTokens();
         saveEmail(state.email);
       }}
     >
       Entrar
-      </button>
+    </button>
   </Link>
 );
 
 const Login = () => {
-  const [state, setState] = useState({ email: '', password: '' });
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
   const { email, password } = state;
 
-  const toHandleEmail = (handleEmail) => setState({ ...state, email: handleEmail });
-
-  const toHandlePassword = (handlePassword) => setState({ ...state, password: handlePassword });
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.id]: e.target.value,
+    });
+  };
 
   return (
     <div>
-      <h1>Login</h1>
-      <input
-        data-testid="email-input"
-        value={email}
-        type="email"
-        placeholder="Email"
-        required
-        onChange={(e) => toHandleEmail(e.target.value)}
-      />
-      <input
-        data-testid="password-input"
-        value={password}
-        type="password"
-        placeholder="Senha"
-        required
-        onChange={(e) => toHandlePassword(e.target.value)}
-      />
+      {textInput(email, handleChange, 'email', 'Email')}
+      {textInput(password, handleChange, 'password', 'Senha')}
       {submitButton(state)}
     </div>
   );
