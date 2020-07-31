@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import searchRecpipesByName from '../services/getRecipes';
 
@@ -17,7 +18,7 @@ const MainRecipes = ({ type }) => {
   if (isFetching) return <div><h3>Loading...</h3></div>;
   return (
     <div>
-      {recipes.map((recipe, index) => (
+      {recipes.map((recipe) => (
         <p key={recipe.strMeal}>{recipe.strMeal}</p>
       ))}
     </div>
@@ -26,7 +27,6 @@ const MainRecipes = ({ type }) => {
 
 MainRecipes.propTypes = {
   type: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default MainRecipes;
