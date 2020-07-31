@@ -13,3 +13,7 @@ function RecipeCard({ recipe }) {
 }
 
 export default RecipeCard;
+
+RecipeCard.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+};

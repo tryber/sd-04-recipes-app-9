@@ -22,7 +22,7 @@ const MainRecipes = ({ type, title }) => {
     <div>
       <Header title={title} />
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.strMeal} recipe={recipe}/>
+        <RecipeCard key={recipe.strMeal} recipe={recipe} />
       ))}
     </div>
   );
