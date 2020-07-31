@@ -1,63 +1,53 @@
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-
-const checkEmail = (email) => email.match(/\S+@\S+\.\S+/i);
-
-const checkPassword = (password) => (password.length > 6);
-
-const textInput = (state, handleChange, type, placeholder) => (
-  <input
-    type={type}
-    value={state}
-    data-testid={`${type}-input`}
-    onChange={(e) => handleChange(e)}
-    id={type}
-    placeholder={placeholder}
-  />
-);
-
-const saveTokens = () => {
-  localStorage.setItem('mealsToken', '1');
-  localStorage.setItem('cocktailsToken', '1');
-};
-
-const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email }));
-
-const submitButton = (state) => (
-  <Link to="/comidas">
-    <button
-      type="button"
-      disabled={!(checkEmail(state.email) && checkPassword(state.password))}
-      data-testid="login-submit-btn"
-      onClick={() => {
-        saveTokens();
-        saveEmail(state.email);
-      }}
-    >
-      Entrar
-    </button>
-  </Link>
-);
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-  });
+  const [state, setState] = useState({ email: '', password: '' });
   const { email, password } = state;
 
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.id]: e.target.value,
-    });
+  const toSubmit = () => {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify({ email }));
   };
+
+  const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+
+  const checkPassword = (value) => value.length > 6;
+
+  const toHandleEmail = (handleEmail) => setState({ ...state, email: handleEmail });
+
+  const toHandlePassword = (handlePassword) => setState({ ...state, password: handlePassword });
 
   return (
     <div>
-      {textInput(email, handleChange, 'email', 'Email')}
-      {textInput(password, handleChange, 'password', 'Senha')}
-      {submitButton(state)}
+      <h1>Login</h1>
+      <input
+        data-testid="email-input"
+        value={email}
+        type="email"
+        placeholder="Email"
+        required
+        onChange={(e) => toHandleEmail(e.target.value)}
+      />
+      <input
+        data-testid="password-input"
+        value={password}
+        type="password"
+        placeholder="Senha"
+        required
+        onChange={(e) => toHandlePassword(e.target.value)}
+      />
+      <Link to="/comidas">
+        <button
+          data-testid="login-submit-btn"
+          type="button"
+          disabled={!(checkPassword(password) && checkEmail(email))}
+          onClick={() => toSubmit()}
+        >
+          Entrar
+        </button>
+      </Link>
     </div>
   );
 };
