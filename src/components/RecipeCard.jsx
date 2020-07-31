@@ -1,9 +1,9 @@
 import React from 'react';
 
 function RecipeCard() {
-  return(
+  return (
     <div>
-      <img />
+      {/* <img /> */}
     </div>
   );
 }
