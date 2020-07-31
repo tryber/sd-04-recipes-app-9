@@ -14,13 +14,9 @@ const Login = () => {
   const checkEmail = (email) => email.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
   const checkPassword = (password) => password.length > 6;
 
-  const toHandleEmail = (email) => {
-    setState({ ...state, email });
-  };
+  const toHandleEmail = (email) => setState({ ...state, email });
 
-  const toHandlePassword = (password) => {
-    setState({ ...state, password });
-  };
+  const toHandlePassword = (password) => setState({ ...state, password });
 
   return (
     <div>
