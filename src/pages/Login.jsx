@@ -41,7 +41,7 @@ const Login = () => {
       <Link to="/comidas">
         <button
           data-testid="login-submit-btn"
-          type="submit"
+          type="button"
           disabled={!(checkPassword(password) && checkEmail(email))}
           onClick={() => toSubmit()}
         >
