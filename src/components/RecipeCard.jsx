@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function RecipeCard() {
+function RecipeCard({ recipe }) {
   return (
-    <div>
-      {/* <img /> */}
-    </div>
+    <Link>
+      <div className="recipeCard">
+        <img src={recipe.strMealThumb} alt="recipe" />
+        <p>{recipe.strMeal}</p>
+      </div>
+    </Link>
   );
 }
 
