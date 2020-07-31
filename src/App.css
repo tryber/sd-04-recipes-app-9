@@ -46,6 +46,15 @@
   align-items: center;
 }
 
+/* .recipeCard {
+position: absolute;
+width: 161px;
+height: 109px;
+left: 187px;
+top: 355px;
+border-radius: 6px 6px 0px 0px;
+} */
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import searchRecpipesByName from '../services/getRecipes';
 import Header from '../components/Header';
+import RecipeCard from '../components/RecipeCard';
 
 const MainRecipes = ({ type, title }) => {
   const {
@@ -21,7 +22,7 @@ const MainRecipes = ({ type, title }) => {
     <div>
       <Header title={title} />
       {recipes.map((recipe) => (
-        <p key={recipe.strMeal}>{recipe.strMeal}</p>
+        <RecipeCard key={recipe.strMeal} recipe={recipe} />
       ))}
     </div>
   );

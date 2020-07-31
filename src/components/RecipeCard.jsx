@@ -1,11 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-function RecipeCard() {
+function RecipeCard({ recipe }) {
   return (
-    <div>
-      {/* <img /> */}
-    </div>
+    <Link>
+      <div className="recipeCard">
+        <img src={recipe.strMealThumb} alt="recipe" />
+        <p>{recipe.strMeal}</p>
+      </div>
+    </Link>
   );
 }
 
 export default RecipeCard;
+
+RecipeCard.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+};
