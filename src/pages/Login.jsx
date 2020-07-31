@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+
+const checkPassword = (value) => value.length > 6;
+
+const toSubmit = () => {
+  localStorage.setItem('mealsToken', 1);
+  localStorage.setItem('cocktailsToken', 1);
+};
+
+const saveEmail = (mail) => localStorage.setItem('user', JSON.stringify({ email: mail }));
+
+const submitButton = (state) => (
+  <Link to="/comidas">
+    <button
+      data-testid="login-submit-btn"
+      type="button"
+      disabled={!(checkPassword(state.password) && checkEmail(state.email))}
+      onClick={() => {
+        toSubmit();
+        saveEmail(state.email);
+      }}
+    >
+      Entrar
+      </button>
+  </Link>
+);
+
 const Login = () => {
   const [state, setState] = useState({ email: '', password: '' });
   const { email, password } = state;
-
-  const toSubmit = () => {
-    localStorage.setItem('mealsToken', '1');
-    localStorage.setItem('cocktailsToken', '1');
-  };
-
-  const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-
-  const checkPassword = (value) => value.length > 6;
 
   const toHandleEmail = (handleEmail) => setState({ ...state, email: handleEmail });
 
@@ -37,16 +55,7 @@ const Login = () => {
         required
         onChange={(e) => toHandlePassword(e.target.value)}
       />
-      <Link to="/comidas">
-        <button
-          data-testid="login-submit-btn"
-          type="button"
-          disabled={!(checkPassword(password) && checkEmail(email))}
-          onClick={() => toSubmit()}
-        >
-          Entrar
-        </button>
-      </Link>
+      {submitButton(state)}
     </div>
   );
 };
