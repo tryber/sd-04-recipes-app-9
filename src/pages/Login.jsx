@@ -17,8 +17,8 @@ const textInput = (state, handleChange, type, placeholder) => (
 );
 
 const saveTokens = () => {
-  localStorage.setItem('mealsToken', 1);
-  localStorage.setItem('cocktailsToken', 1);
+  localStorage.setItem('mealsToken', '1');
+  localStorage.setItem('cocktailsToken', '1');
 };
 
 const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email }));
