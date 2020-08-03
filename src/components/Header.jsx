@@ -5,7 +5,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Searchbar from '../components/Searchbar';
 
-const Header = ({ title }) => {
+const Header = ({ type, title }) => {
   const [seeSearchbar, setSeeSearchbar] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ const Header = ({ title }) => {
           onClick={() => setSeeSearchbar(!seeSearchbar)}
         />
       </header>
-      {seeSearchbar && <Searchbar />}
+      {seeSearchbar && <Searchbar type={type} />}
     </div>
   );
 };
