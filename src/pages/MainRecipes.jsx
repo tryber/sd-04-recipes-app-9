@@ -17,14 +17,16 @@ const MainRecipes = ({ type, title }) => {
     });
   }, []);
 
-  if (isFetching) return <div><h3>Loading...</h3></div>;
+  if (isFetching) return <div class="progress preloader"><div class="indeterminate" /></div>;
   return (
     <div>
       <Header title={title} type={type} />
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.strMeal} recipe={recipe} />
-      ))}
-    </div>
+      <div className="main">
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe.strMeal} recipe={recipe} />
+        ))}
+      </div>
+    </div >
   );
 };
 
