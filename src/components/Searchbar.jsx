@@ -47,7 +47,7 @@ function SearchBar({ type }) {
         name="searchText"
         onChange={(e) => handleChange(e)}
       />
-      <label>
+      <label htmlFor="ingredientes">
         <input
           type="radio"
           id="ingredientes"
@@ -58,7 +58,7 @@ function SearchBar({ type }) {
         />
         <span>Ingredientes</span>
       </label>
-      <label>
+      <label htmlFor="name">
         <input
           type="radio"
           id="name"
@@ -69,7 +69,7 @@ function SearchBar({ type }) {
         />
         <span>Nome</span>
       </label>
-      <label>
+      <label htmlFor="first-letter">
         <input
           type="radio"
           id="first-letter"
