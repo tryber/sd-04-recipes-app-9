@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 function RecipeCard({ recipe }) {
   return (
     <Link>
-      <div className="recipeCard">
-        <img src={recipe.strMealThumb} alt="recipe" />
-        <p>{recipe.strMeal}</p>
+      <div className="card">
+        <div className="image-div">
+          <img src={recipe.strMealThumb} alt="recipe" className="recipe-image" />
+          <p>{recipe.strMeal}</p>
+        </div>
       </div>
     </Link>
   );

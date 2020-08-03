@@ -42,18 +42,45 @@
 }
 
 .header {
-  display: flex;
   align-items: center;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 600px;
 }
 
-/* .recipeCard {
-position: absolute;
-width: 161px;
-height: 109px;
-left: 187px;
-top: 355px;
-border-radius: 6px 6px 0px 0px;
-} */
+.image-div {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recipe-image {
+  width: 100%;
+}
+
+.card {
+  background-color: #FBF9EF;
+  display: flex;
+  height: 230px;
+  margin: 2px 4px;
+  text-align: center;
+  width: 150px;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.preloader {
+  margin: 30% auto;
+  width: 80%;
+}
 
 @keyframes shake {
   0% {
