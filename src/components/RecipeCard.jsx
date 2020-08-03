@@ -7,7 +7,7 @@ function RecipeCard({ recipe }) {
     <Link>
       <div className="card">
         <div className="image-div">
-          <img src={recipe.strMealThumb} alt="recipe" className="recipe-image"/>
+          <img src={recipe.strMealThumb} alt="recipe" className="recipe-image" />
           <p>{recipe.strMeal}</p>
         </div>
       </div>
