@@ -88,9 +88,9 @@
 }
 
 .input-radio {
-  width: 200px;
-  padding-right: 30px;
   margin: 0px;
+  padding-right: 30px;
+  width: 200px;
 }
 
 @keyframes shake {
