@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-import searchRecpipesByName from '../services/getRecipes';
+import { searchRecipesByName } from '../services/getRecipes';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 
@@ -11,7 +11,7 @@ const MainRecipes = ({ type, title }) => {
   } = useContext(RecipesContext);
 
   useEffect(() => {
-    searchRecpipesByName(type, '').then((data) => {
+    searchRecipesByName(type, '').then((data) => {
       fetchRecipes(data.meals);
       setIsFetching(false);
     });
@@ -20,7 +20,7 @@ const MainRecipes = ({ type, title }) => {
   if (isFetching) return <div><h3>Loading...</h3></div>;
   return (
     <div>
-      <Header title={title} />
+      <Header title={title} type={type} />
       {recipes.map((recipe) => (
         <RecipeCard key={recipe.strMeal} recipe={recipe} />
       ))}
