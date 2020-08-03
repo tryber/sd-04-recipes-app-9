@@ -20,6 +20,7 @@ const Header = ({ type, title }) => {
           type="image"
           data-testid="search-top-btn"
           onClick={() => setSeeSearchbar(!seeSearchbar)}
+          alt="img-search"
         />
       </header>
       {seeSearchbar && <Searchbar type={type} />}

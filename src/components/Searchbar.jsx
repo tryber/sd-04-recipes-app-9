@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import {
   searchRecipesByName,
@@ -16,25 +17,23 @@ function SearchBar({ type }) {
   };
 
   const handleBtn = () => {
+    const searchOptions = {
+      name: searchRecipesByName,
+      ingredients: serchByIngredients,
+      firstLetter: searchByFirstLetter,
+    }
     if (searchText.length > 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
-    } else if (searchBy === 'name') {
-      searchRecipesByName(type, searchText).then((data) => {
-        fetchRecipes(data.meals);
-        setIsFetching(false);
-      });
-    } else if (searchBy === 'ingredients') {
-      serchByIngredients(type, searchBy).then((data) => {
-        fetchRecipes(data.meals);
-        setIsFetching(false);
-      });
-    } else if (searchText.length === 1 && searchBy === 'firstLetter') {
-      searchByFirstLetter(type, searchBy).then((data) => {
-        fetchRecipes(data.meals);
-        setIsFetching(false);
-      });
     } else {
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      searchOptions[searchBy](type, searchText).then((data) => {
+        if (data.meals) {
+          fetchRecipes(data.meals);
+          setIsFetching(false);
+        }
+        else {
+          alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        }
+      });
     }
   };
 
@@ -86,5 +85,9 @@ function SearchBar({ type }) {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default SearchBar;
