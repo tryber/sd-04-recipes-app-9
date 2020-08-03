@@ -21,7 +21,7 @@ function SearchBar({ type }) {
       name: searchRecipesByName,
       ingredients: serchByIngredients,
       firstLetter: searchByFirstLetter,
-    }
+    };
     if (searchText.length > 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
@@ -29,8 +29,7 @@ function SearchBar({ type }) {
         if (data.meals) {
           fetchRecipes(data.meals);
           setIsFetching(false);
-        }
-        else {
+        } else {
           alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         }
       });
