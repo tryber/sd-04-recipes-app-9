@@ -19,7 +19,7 @@ const MainRecipes = ({ type, title }) => {
 
   if (isFetching) {
     return <div className="progress preloader"><div className="indeterminate" /></div>;
-  };
+  }
 
   return (
     <div>
