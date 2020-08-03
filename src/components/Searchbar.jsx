@@ -37,7 +37,7 @@ function SearchBar({ type }) {
   };
 
   return (
-    <div>
+    <div className="searchBar">
       <input
         type="text"
         data-testid="search-input"
@@ -45,7 +45,7 @@ function SearchBar({ type }) {
         name="searchText"
         onChange={(e) => handleChange(e)}
       />
-      <label htmlFor="ingredientes">
+      <label htmlFor="ingredientes" className="input-radio">
         <input
           type="radio"
           id="ingredientes"
@@ -56,7 +56,7 @@ function SearchBar({ type }) {
         />
         <span>Ingredientes</span>
       </label>
-      <label htmlFor="name">
+      <label htmlFor="name" className="input-radio">
         <input
           type="radio"
           id="name"
@@ -67,7 +67,7 @@ function SearchBar({ type }) {
         />
         <span>Nome</span>
       </label>
-      <label htmlFor="first-letter">
+      <label htmlFor="first-letter" className="input-radio">
         <input
           type="radio"
           id="first-letter"

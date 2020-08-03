@@ -82,6 +82,17 @@
   width: 80%;
 }
 
+.searchBar {
+  margin: auto;
+  width: 90%;
+}
+
+.input-radio {
+  width: 200px;
+  padding-right: 30px;
+  margin: 0px;
+}
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);
