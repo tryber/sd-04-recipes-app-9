@@ -1,23 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import SearchBarBtn from '../utils/SeachBarBtn';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RecipesContext } from '../context/RecipesContext';
-import {
-  searchRecipesByName,
-  serchByIngredients,
-  searchByFirstLetter,
-} from '../services/getRecipes';
+// import { RecipesContext } from '../context/RecipesContext';
+// import {
+//   searchRecipesByName,
+//   serchByIngredients,
+//   searchByFirstLetter,
+// } from '../services/getRecipes';
 
-const searchOptions = {
-  name: searchRecipesByName,
-  ingredients: serchByIngredients,
-  firstLetter: searchByFirstLetter,
-};
+// const searchOptions = {
+//   name: searchRecipesByName,
+//   ingredients: serchByIngredients,
+//   firstLetter: searchByFirstLetter,
+// };
 
 const SearchBar = ({ type, history }) => {
-  const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
   const [state, setState] = useState({ searchBy: 'name', searchText: '' });
   const { searchBy, searchText } = state;
+  // const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -27,21 +28,21 @@ const SearchBar = ({ type, history }) => {
     if (searchText.length > 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
-      searchOptions[searchBy](type, searchText).then((data) => {
-        if (data.meals || data.drinks) {
-          fetchRecipes(data.meals || data.drinks);
-          setIsFetching(false);
-        } else {
-          return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-        }
-        // if (type === 'meal' && data.meals.length === 1) {
-        //   history.push(`/comidas/${data.meals[0].idMeal}`);
-        // }
-        // if (type === 'cocktail' && data.drinks.length === 1) {
-        //   history.push(`/bebidas/${data.drinks[0].idDrink}`);
-        // }
-        return null;
-      });
+      // searchOptions[searchBy](type, searchText).then((data) => {
+      //   if (data.meals || data.drinks) {
+      //     fetchRecipes(data.meals || data.drinks);
+      //     setIsFetching(false);
+      //   } else {
+      //     return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      //   }
+      //   if (type === 'meal' && data.meals.length === 1) {
+      //     history.push(`/comidas/${data.meals[0].idMeal}`);
+      //   }
+      //   if (type === 'cocktail' && data.drinks.length === 1) {
+      //     history.push(`/bebidas/${data.drinks[0].idDrink}`);
+      //   }
+      //   return null;
+      // });
     }
   };
 
@@ -87,7 +88,11 @@ const SearchBar = ({ type, history }) => {
         />
         <span>Primeira letra</span>
       </label>
-      <button data-testid="exec-search-btn" type="button" onClick={() => handleBtn()}>
+      <button
+        data-testid="exec-search-btn"
+        type="button"
+        onClick={() => handleBtn()}
+      >
         Buscar
       </button>
     </div>
@@ -95,9 +100,7 @@ const SearchBar = ({ type, history }) => {
 };
 
 SearchBar.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   type: PropTypes.string.isRequired,
 };
 
