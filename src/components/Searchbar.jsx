@@ -34,10 +34,12 @@ const SearchBar = ({ type, history }) => {
         } else {
           return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         }
-        if (type === 'meal' && data.meals.length === 1)
-          history.push(`/comidas/${data.meals[0].idMeal}`);
-        if (type === 'cocktail' && data.drinks.length === 1)
-          history.push(`/bebidas/${data.drinks[0].idDrink}`);
+        // if (type === 'meal' && data.meals.length === 1) {
+        //   history.push(`/comidas/${data.meals[0].idMeal}`);
+        // }
+        // if (type === 'cocktail' && data.drinks.length === 1) {
+        //   history.push(`/bebidas/${data.drinks[0].idDrink}`);
+        // }
         return null;
       });
     }
