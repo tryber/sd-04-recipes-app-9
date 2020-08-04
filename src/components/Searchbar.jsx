@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import {
@@ -7,30 +8,38 @@ import {
   searchByFirstLetter,
 } from '../services/getRecipes';
 
-function SearchBar({ type }) {
+const searchOptions = {
+  name: searchRecipesByName,
+  ingredients: serchByIngredients,
+  firstLetter: searchByFirstLetter,
+};
+
+const SearchBar = ({ type, history }) => {
   const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
-  const [state, setState] = useState({ searchBy: '', searchText: '' });
+  const [state, setState] = useState({ searchBy: 'name', searchText: '' });
   const { searchBy, searchText } = state;
+  // let history = useHistory();
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 
   const handleBtn = () => {
-    const searchOptions = {
-      name: searchRecipesByName,
-      ingredients: serchByIngredients,
-      firstLetter: searchByFirstLetter,
-    };
     if (searchText.length > 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
       searchOptions[searchBy](type, searchText).then((data) => {
-        if (data.meals) {
-          fetchRecipes(data.meals);
+        if (data.meals || data.drinks) {
+          fetchRecipes(data.meals || data.drinks);
           setIsFetching(false);
         } else {
-          alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+          return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        }
+        if (type === 'meal' && data.meals.length === 1) {
+          history.push(`/comidas/${data.meals[0].idMeal}`);
+        }
+        if (type === 'cocktail' && data.drinks.length === 1) {
+          history.push(`/bebidas/${data.drinks[0].idDrink}`);
         }
       });
     }
@@ -86,7 +95,10 @@ function SearchBar({ type }) {
 }
 
 SearchBar.propTypes = {
-  type: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }),
+  type: PropTypes.string.isRequired
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);
