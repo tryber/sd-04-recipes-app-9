@@ -4,21 +4,26 @@ import { RecipesContext } from '../context/RecipesContext';
 import { searchRecipesByName } from '../services/getRecipes';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
+import Footer from '../components/Footer';
 
 const MainRecipes = ({ type, title }) => {
-  const {
-    isFetching, setIsFetching, recipes, fetchRecipes,
-  } = useContext(RecipesContext);
+  const { isFetching, setIsFetching, recipes, fetchRecipes } = useContext(RecipesContext);
+  const getType = type === 'meal' ? 'meals' : 'drinks';
+  const getName = type === 'meal' ? 'strMeal' : 'strDrink';
 
   useEffect(() => {
     searchRecipesByName(type, '').then((data) => {
-      fetchRecipes(data.meals);
+      fetchRecipes(data[getType]);
       setIsFetching(false);
     });
   }, []);
 
   if (isFetching) {
-    return <div className="progress preloader"><div className="indeterminate" /></div>;
+    return (
+      <div className="progress preloader">
+        <div className="indeterminate" />
+      </div>
+    );
   }
 
   return (
@@ -26,10 +31,11 @@ const MainRecipes = ({ type, title }) => {
       <Header title={title} type={type} />
       <div className="main">
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe.strMeal} recipe={recipe} />
+          <RecipeCard key={recipe[getName]} type={type} recipe={recipe} />
         ))}
       </div>
-    </div >
+      <Footer />
+    </div>
   );
 };
 
