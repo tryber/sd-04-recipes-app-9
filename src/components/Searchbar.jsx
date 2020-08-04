@@ -41,6 +41,7 @@ const SearchBar = ({ type, history }) => {
         if (type === 'cocktail' && data.drinks.length === 1) {
           history.push(`/bebidas/${data.drinks[0].idDrink}`);
         }
+        return null;
       });
     }
   };
