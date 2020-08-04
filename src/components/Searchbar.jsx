@@ -92,13 +92,13 @@ const SearchBar = ({ type, history }) => {
       </button>
     </div>
   );
-}
+};
 
 SearchBar.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func
-  }),
-  type: PropTypes.string.isRequired
+    push: PropTypes.func,
+  }).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default withRouter(SearchBar);

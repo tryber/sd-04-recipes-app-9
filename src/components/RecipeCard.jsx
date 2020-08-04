@@ -22,4 +22,5 @@ export default RecipeCard;
 
 RecipeCard.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  type: PropTypes.string.isRequired,
 };

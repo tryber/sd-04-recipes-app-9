@@ -30,7 +30,7 @@ const Routes = () => (
         render={(props) => <RecipeDetails {...props} type="cocktail" />}
       />
       <Route exact path="/perfil" component={Profile} />
-{/*       <Route
+      {/* <Route
         exact path="/comidas/:id/in-progress"
         component={<RecipeInProgress />}
       />
