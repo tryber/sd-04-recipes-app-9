@@ -8,18 +8,18 @@ import {
   searchByFirstLetter,
 } from '../services/getRecipes';
 
-const searchOptions = {
-  name: searchRecipesByName,
-  ingredients: serchByIngredients,
-  firstLetter: searchByFirstLetter,
-};
-
 const SearchBar = ({ type, history }) => {
   const [state, setState] = useState({ searchBy: 'name', searchText: '' });
   const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
   const { searchBy, searchText } = state;
 
   const handleBtn = () => {
+    const searchOptions = {
+      name: searchRecipesByName,
+      ingredients: serchByIngredients,
+      firstLetter: searchByFirstLetter,
+    };
+
     if (searchText.length > 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
