@@ -19,21 +19,25 @@ const Categories = ({ type }) => {
   }, [type]);
 
   useEffect(() => {
-    (filteredData)
-      ? searchByCategories(type, filteredData).then((data) => {
+    if (filteredData) {
+      searchByCategories(type, filteredData).then((data) => {
         fetchRecipes(data);
         setIsFetching(false);
-      })
-      : searchRecipesByName(type, '').then((data) => {
-      fetchRecipes(data);
-      setIsFetching(false);
       });
+    } else {
+      searchRecipesByName(type, '').then((data) => {
+        fetchRecipes(data);
+        setIsFetching(false);
+      });
+    }
   }, [filteredData]);
 
   const handleChange = (category) => {
-    (category === 'All' || category === filteredData)
-      ? setFilteredData('')
-      : setFilteredData(category);
+    if (category === 'All' || category === filteredData) {
+      setFilteredData('');
+    } else {
+      setFilteredData(category);
+    }
   };
 
   return (
