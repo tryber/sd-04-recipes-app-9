@@ -10,7 +10,7 @@ const Profile = () => {
       <Header title="Perfil" />
       <div data-testid="profile-email">{emailUser.email}</div>
       <Link to="/receitas-feitas">
-        <button data-testid="profile-done-btn"  type="button">
+        <button data-testid="profile-done-btn" type="button">
           Receitas Feitas
         </button>
       </Link>
