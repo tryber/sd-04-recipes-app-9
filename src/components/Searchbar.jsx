@@ -20,7 +20,7 @@ const SearchBar = ({ type, history }) => {
       firstLetter: searchByFirstLetter,
     };
 
-    if (searchText.length > 1 && searchBy === 'firstLetter') {
+    if (searchText.length !== 1 && searchBy === 'firstLetter') {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
       searchOptions[searchBy](type, searchText).then((data) => {
