@@ -9,7 +9,7 @@ const Header = ({ type, title }) => {
   const [seeSearchbar, setSeeSearchbar] = useState(false);
   const direction = useLocation().pathname;
 
-  if (direction === '/comidas' || direction === '/bebidas' || direction === '/explorarorigem') {
+  if (direction === '/comidas' || direction === '/bebidas' || direction === '/explorar/comidas/area') {
     return (
       <div className="row">
         <header className="brand-logo center header">

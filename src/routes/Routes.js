@@ -9,6 +9,8 @@ import Profile from '../pages/Profile';
 import ExplorerDrinksOrFoods from '../pages/ExplorerDrinksOrFoods';
 import ExplorerIngredientsPage from '../pages/ExplorerIngredientsPage';
 import ExplorerAreaPage from '../pages/ExplorerAreaPage';
+import MadeRecipes from '../pages/MadeRecipes';
+import Favorites from '../pages/Favorites';
 
 const Routes = () => (
   <Router>
@@ -26,12 +28,12 @@ const Routes = () => (
       <Route
         exact
         path="/comidas/:id"
-        render={(props) => <RecipeDetails {...props} type="meal" />}
+        render={(props) => <RecipeDetails {...props} type="meal" page="detail" />}
       />
       <Route
         exact
         path="/bebidas/:id"
-        render={(props) => <RecipeDetails {...props} type="cocktail" />}
+        render={(props) => <RecipeDetails {...props} type="cocktail" page="detail" />}
       />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/explorar" component={MainExplorer} />
@@ -53,14 +55,16 @@ const Routes = () => (
       <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerIngredientsPage} />
       <Route exact path="/explorar/comidas/area" component={ExplorerAreaPage} />
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
-      {/* <Route
+      <Route exact path="/receitas-feitas" component={MadeRecipes} />
+      <Route exact path="/receitas-favoritas" component={Favorites} />
+      <Route
         exact path="/comidas/:id/in-progress"
-        component={<RecipeInProgress />}
+        render={(props) => <RecipeDetails {...props} type="meal" page="inProgress" />}
       />
       <Route
         exact path="/bebidas/:id/in-progress"
-        component={<RecipeInProgress />}
-      /> */}
+        render={(props) => <RecipeDetails {...props} type="cocktail" page="inProgress" />}
+      />
       <Route exact path="/" component={Login} />
       <Route component={NotFound} />
     </Switch>
