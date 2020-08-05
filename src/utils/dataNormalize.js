@@ -42,9 +42,15 @@ const normalizeRecipe = (recipe, type) => {
   };
 };
 
-export const dataNormalize = (recipes) => {
+const dataNormalize = (recipes) => {
   const data = recipes.meals || recipes.drinks;
   let type = '';
-  recipes.meals ? type = 'Meal' : type = 'Drink';
+  if(recipes.meals) {
+    type = 'Meal';
+  } else {
+    type = 'Drink';
+  }
   return data.map((recipe) => normalizeRecipe(recipe, type));
 };
+
+export default dataNormalize;

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { dataNormalize } from '../utils/dataNormalize';
+import dataNormalize from '../utils/dataNormalize';
 
 export const RecipesContext = createContext();
 

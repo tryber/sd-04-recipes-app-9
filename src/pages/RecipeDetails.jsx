@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-import { getRecipeDetailsById, searchRecipesByName } from '../services/getRecipes';
+import { getRecipeDetailsById } from '../services/getRecipes';
 import ShareBtn from '../components/ShareBtn';
 
 const header = (recipe) => (
@@ -24,7 +24,7 @@ const header = (recipe) => (
   </div>
 );
 
-const RecipeDetails = ({ type, history }) => {
+const RecipeDetails = ({ type }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
 
@@ -48,7 +48,10 @@ const RecipeDetails = ({ type, history }) => {
       </div>
     </div>
   );
-
 };
+
+RecipeDetails.propTypes = {
+  type: PropTypes.string.isRequired,
+}
 
 export default RecipeDetails;
