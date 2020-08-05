@@ -13,12 +13,17 @@ export const searchByFirstLetter = (type, letter) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
 
-export const searchByCategories = (type) =>
+export const getRecipeDetailsById = (type, id) =>
+  fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`).then((response) =>
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
+  );
+
+export const searchByCategoriesList = (type) =>
   fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?c=list`).then((response) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
 
-export const getRecipeDetailsById = (type, id) =>
-  fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`).then((response) =>
+export const searchByCategories = (type, category) =>
+  fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?c=${category}`).then((response) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
