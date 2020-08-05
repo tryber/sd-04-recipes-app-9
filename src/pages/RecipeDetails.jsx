@@ -52,6 +52,6 @@ const RecipeDetails = ({ type }) => {
 
 RecipeDetails.propTypes = {
   type: PropTypes.string.isRequired,
-}
+};
 
 export default RecipeDetails;

@@ -45,7 +45,7 @@ const normalizeRecipe = (recipe, type) => {
 const dataNormalize = (recipes) => {
   const data = recipes.meals || recipes.drinks;
   let type = '';
-  if(recipes.meals) {
+  if (recipes.meals) {
     type = 'Meal';
   } else {
     type = 'Drink';
