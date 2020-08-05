@@ -23,7 +23,6 @@ const Categories = ({ type }) => {
       searchByCategories(type, filteredData).then((data) => {
         fetchRecipes(data);
         setIsFetching(false);
-        console.log('data', data);
       });
     } else {
       searchRecipesByName(type, '').then((data) => {
