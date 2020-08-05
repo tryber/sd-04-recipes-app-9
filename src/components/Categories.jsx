@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, useContext } from 'react';
 import {
-  searchByCategoriesList,
+  searchByCategoriesBtn,
   searchRecipesByName,
   searchByCategories,
 } from '../services/getRecipes';
@@ -13,7 +13,7 @@ const Categories = ({ type }) => {
   const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
 
   useEffect(() => {
-    searchByCategoriesList(type).then((data) => {
+    searchByCategoriesBtn(type).then((data) => {
       setCategories((data.meals || data.drinks).slice(0, 5));
     });
   }, [type]);
@@ -23,6 +23,7 @@ const Categories = ({ type }) => {
       searchByCategories(type, filteredData).then((data) => {
         fetchRecipes(data);
         setIsFetching(false);
+        console.log('data', data);
       });
     } else {
       searchRecipesByName(type, '').then((data) => {
