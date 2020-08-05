@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
 import { getRecipeDetailsById } from '../services/getRecipes';
 import ShareBtn from '../components/ShareBtn';
-import YouTube from 'react-youtube';
 
 const showIngredientsList = (recipe) => (
   <div>
@@ -92,10 +92,11 @@ const showYoutubeVideo = (recipe) => {
     return (
       <div data-testid="video">
         <h4>Video</h4>
-        <YouTube videoId={recipe.strYoutube.split('=')[1]} opts={opts}/>
+        <YouTube videoId={recipe.strYoutube.split('=')[1]} opts={opts} />
       </div>
     );
   }
+  return null;
 };
 
 const RecipeDetails = ({ type, page }) => {
