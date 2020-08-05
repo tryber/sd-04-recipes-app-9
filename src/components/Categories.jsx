@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { searchByCategories } from '../services/getRecipes';
 
-const Categories = () => {
+const Categories = ({ type }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    searchByCategories(type).then((data) => {
+      setCategories((data.drinks || data.meals).slice(0, 5));
+    });
+  }, []);
+
+  const handleChange = () => {};
+
   return (
     <div>
-      <button type="button" data-testid="filter-by-all-btn" onClick={() => {}}>
+      <button type="button" data-testid="filter-by-all-btn" onClick={() => handleChange()}>
         All
       </button>
-      <button type="button" data-testid="${categoryName}-category-filter" onClick={() => {}}>
-        Category
-      </button>
+      {categories.map((cat) => (
+        <button
+          type="button"
+          data-testid={`${cat.strCategory}-category-filter`}
+          onClick={() => handleChange()}
+        >
+          {cat.strCategory}
+        </button>
+      ))}
     </div>
   );
 };
