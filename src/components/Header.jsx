@@ -17,15 +17,13 @@ const Header = ({ type, title }) => {
             <img src={profileIcon} alt="profileIcon" data-testid="profile-top-btn" />
           </Link>
           <h3 data-testid="page-title">{title}</h3>
-          <button>
-            <img
-              src={searchIcon}
-              type="image"
-              data-testid="search-top-btn"
-              onClick={() => setSeeSearchbar(!seeSearchbar)}
-              alt="img-search"
-            />
-          </button>
+          <input
+            src={searchIcon}
+            type="image"
+            data-testid="search-top-btn"
+            onClick={() => setSeeSearchbar(!seeSearchbar)}
+            alt="img-search"
+          />
         </header>
         {seeSearchbar && <Searchbar type={type} />}
       </div>

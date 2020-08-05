@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -51,3 +52,8 @@ const ExplorerDrinksOrFoods = ({ type, title }) => {
 };
 
 export default ExplorerDrinksOrFoods;
+
+ExplorerDrinksOrFoods.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
