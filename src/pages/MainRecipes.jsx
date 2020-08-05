@@ -28,8 +28,15 @@ const MainRecipes = ({ type, title }) => {
     <div>
       <Header title={title} type={type} />
       <div className="main">
-        {recipes.map((recipe) => (
-          <RecipeCard key={recipe.strName} type={type} recipe={recipe} title={title} />
+        {recipes.map((recipe, index) => (
+          <RecipeCard
+            key={recipe.strName}
+            type={type}
+            recipe={recipe}
+            title={title}
+            page="main"
+            index={index}
+          />
         ))}
       </div>
       <Footer />
