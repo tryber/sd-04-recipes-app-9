@@ -8,7 +8,6 @@ export const serchByIngredients = (type, ingred) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
 
-<<<<<<< HEAD
 export const searchByFirstLetter = (type, letter) =>
   fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?f=${letter}`).then((response) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
@@ -18,16 +17,8 @@ export const searchByCategories = (type) =>
   fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?c=list`).then((response) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
-=======
-export const searchByFirstLetter = (type, letter) => (
-  fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?f=${letter}`)
-    .then((response) => response.json()
-    .then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))))
-);
 
-export const getRecipeDetailsById = (type, id) => (
-  fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`)
-    .then((response) => response.json()
-    .then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))))
-);
->>>>>>> master
+export const getRecipeDetailsById = (type, id) =>
+  fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`).then((response) =>
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
+  );
