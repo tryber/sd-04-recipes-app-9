@@ -15,3 +15,9 @@ export const searchByFirstLetter = (type, letter) => (
     .then((response) => response.json()
     .then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))))
 );
+
+export const getRecipeDetailsById = (type, id) => (
+  fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then((response) => response.json()
+    .then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))))
+);

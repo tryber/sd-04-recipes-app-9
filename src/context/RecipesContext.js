@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { dataNormalize } from '../utils/dataNormalize';
 
 export const RecipesContext = createContext();
 
@@ -7,7 +8,7 @@ const RecipesProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [recipes, setRecipes] = useState([]);
 
-  const fetchRecipes = (data) => setRecipes(data.slice(0, 12));
+  const fetchRecipes = (data) => setRecipes(dataNormalize(data).slice(0, 12));
 
   const context = {
     isFetching,
