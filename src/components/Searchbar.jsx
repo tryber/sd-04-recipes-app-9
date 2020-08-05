@@ -12,7 +12,7 @@ const SearchBar = ({ type, history }) => {
   const [state, setState] = useState({ searchBy: 'name', searchText: '' });
   const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
   const { searchBy, searchText } = state;
-
+  // comment
   const handleBtn = () => {
     const searchOptions = {
       name: searchRecipesByName,
