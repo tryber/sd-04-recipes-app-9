@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import { getRecipeDetailsById } from '../services/getRecipes';
 import ShareBtn from '../components/ShareBtn';
+import YouTube from 'react-youtube';
 
 const showIngredientsList = (recipe) => (
   <div>
@@ -85,6 +86,18 @@ const saveIngredients = (type, id, checkedIngredients) => {
   localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
+const showYoutubeVideo = (recipe) => {
+  const opts = { height: '200', width: '325' };
+  if (recipe.strYoutube) {
+    return (
+      <div data-testid="video">
+        <h4>Video</h4>
+        <YouTube videoId={recipe.strYoutube.split('=')[1]} opts={opts}/>
+      </div>
+    );
+  }
+};
+
 const RecipeDetails = ({ type, page }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
@@ -129,6 +142,7 @@ const RecipeDetails = ({ type, page }) => {
           ? showIngredientsList(recipes[0])
           : showIngredientsListCheck(recipes[0], checkedIngredients, setChkIngredients)}
         {instructions(recipes[0])}
+        {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
       </div>
     </div>
   );
