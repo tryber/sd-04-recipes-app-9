@@ -35,8 +35,10 @@ const Categories = ({ type }) => {
   const handleChange = (category) => {
     if (category === 'All' || category === filteredData) {
       setFilteredData('');
+      return true;
     } else {
       setFilteredData(category);
+      return false;
     }
   };
 
@@ -54,6 +56,7 @@ const Categories = ({ type }) => {
           data-testid={`${cat.strCategory}-category-filter`}
           type="button"
           onClick={(event) => handleChange(event.target.innerHTML)}
+          key={cat.strCategory}
         >
           {cat.strCategory}
         </button>
