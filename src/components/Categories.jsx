@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { searchByCategories } from '../services/getRecipes';
 
@@ -28,6 +29,10 @@ const Categories = ({ type }) => {
       ))}
     </div>
   );
+};
+
+Categories.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default Categories;
