@@ -57,8 +57,6 @@ const Routes = () => (
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
       <Route exact path="/receitas-feitas" component={MadeRecipes} />
       <Route exact path="/receitas-favoritas" component={Favorites} />
-
-      {/* <Route
       <Route
         exact path="/comidas/:id/in-progress"
         render={(props) => <RecipeDetails {...props} type="meal" page="inProgress" />}
@@ -68,7 +66,7 @@ const Routes = () => (
         render={(props) => <RecipeDetails {...props} type="cocktail" page="inProgress" />}
       />
       <Route exact path="/" component={Login} />
-      <Route component={NotFound} /> */}
+      <Route component={NotFound} />
     </Switch>
   </Router>
 );
