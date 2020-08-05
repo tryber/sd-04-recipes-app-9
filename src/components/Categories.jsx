@@ -35,10 +35,8 @@ const Categories = ({ type }) => {
   const handleChange = (category) => {
     if (category === 'All' || category === filteredData) {
       setFilteredData('');
-      return true;
     } else {
       setFilteredData(category);
-      return false;
     }
   };
 
