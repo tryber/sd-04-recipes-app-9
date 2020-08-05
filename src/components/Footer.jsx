@@ -8,7 +8,7 @@ const Footer = () => (
   <footer>
     <div data-testid="footer" className="page-footer image-Footer">
       <Link to="/bebidas">
-        <img data-testid="drink-bottom-btn" src={drinkIcon} alt="drink-icon" />
+        <img data-testid="drinks-bottom-btn" src={drinkIcon} alt="drink-icon" />
       </Link>
       <Link to="/explorar">
         <img data-testid="explore-bottom-btn" src={exploreIcon} alt="explore-icon" />

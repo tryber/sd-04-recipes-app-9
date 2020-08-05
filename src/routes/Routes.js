@@ -9,6 +9,8 @@ import Profile from '../pages/Profile';
 import ExplorerDrinksOrFoods from '../pages/ExplorerDrinksOrFoods';
 import ExplorerIngredientsPage from '../pages/ExplorerIngredientsPage';
 import ExplorerAreaPage from '../pages/ExplorerAreaPage';
+import MadeRecipes from '../pages/MadeRecipes';
+import Favorites from '../pages/Favorites';
 
 const Routes = () => (
   <Router>
@@ -53,6 +55,8 @@ const Routes = () => (
       <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerIngredientsPage} />
       <Route exact path="/explorar/comidas/area" component={ExplorerAreaPage} />
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
+      <Route exact path="/receitas-feitas" component={MadeRecipes} />
+      <Route exact path="/receitas-favoritas" component={Favorites} />
       <Route
         exact path="/comidas/:id/in-progress"
         render={(props) => <RecipeDetails {...props} type="meal" page="inProgress" />}
