@@ -31,7 +31,7 @@ const MainRecipes = ({ type, title }) => {
       <Header title={title} type={type} />
       <div className="main">
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe[getName]} type={type} recipe={recipe} />
+          <RecipeCard key={recipe[getName]} type={type} recipe={recipe} title={title} />
         ))}
       </div>
       <Footer />
