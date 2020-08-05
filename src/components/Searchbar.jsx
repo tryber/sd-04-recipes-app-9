@@ -25,7 +25,7 @@ const SearchBar = ({ type, history }) => {
     } else {
       searchOptions[searchBy](type, searchText).then((data) => {
         if (data.meals || data.drinks) {
-          fetchRecipes(data.meals || data.drinks);
+          fetchRecipes(data);
           setIsFetching(false);
         } else {
           return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
