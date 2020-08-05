@@ -19,19 +19,19 @@ const Categories = ({ type }) => {
   }, [type]);
 
   useEffect(() => {
-    filteredData
+    (filteredData)
       ? searchByCategories(type, filteredData).then((data) => {
-          fetchRecipes(data);
-          setIsFetching(false);
-        })
+        fetchRecipes(data);
+        setIsFetching(false);
+      })
       : searchRecipesByName(type, '').then((data) => {
-          fetchRecipes(data);
-          setIsFetching(false);
-        });
+      fetchRecipes(data);
+      setIsFetching(false);
+      });
   }, [filteredData]);
 
   const handleChange = (category) => {
-    category === 'All' || category === filteredData
+    (category === 'All' || category === filteredData)
       ? setFilteredData('')
       : setFilteredData(category);
   };
