@@ -100,6 +100,46 @@
   width: 200px;
 }
 
+/* .ExploreFood {
+align-items: flex-end;
+color: #000000;
+display: flex;
+font-family: Roboto;
+font-size: 32px;
+font-style: normal;
+font-weight: normal;
+height: 89px;
+left: 20px;
+line-height: 37px;
+position: absolute;
+top: 58px;
+width: 322px;
+}
+
+.ExploreDrinks {
+align-items: flex-end;
+color: #000000;
+display: flex;
+font-family: Roboto;
+font-size: 32px;
+font-style: normal;
+font-weight: normal;
+height: 89px;
+left: 19px;
+line-height: 37px;
+position: absolute;
+top: 173px;
+width: 322px;
+}
+
+.Explorer-Container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width: 500px;
+} */
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);

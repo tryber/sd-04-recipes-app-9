@@ -9,12 +9,10 @@ import Categories from '../components/Categories';
 
 const MainRecipes = ({ type, title }) => {
   const { isFetching, setIsFetching, recipes, fetchRecipes } = useContext(RecipesContext);
-  const getType = type === 'meal' ? 'meals' : 'drinks';
-  const getName = type === 'meal' ? 'strMeal' : 'strDrink';
 
   useEffect(() => {
     searchRecipesByName(type, '').then((data) => {
-      fetchRecipes(data[getType]);
+      fetchRecipes(data);
       setIsFetching(false);
     });
   }, []);
@@ -33,7 +31,7 @@ const MainRecipes = ({ type, title }) => {
       <Categories type={type} />
       <div className="main">
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe[getName]} type={type} recipe={recipe} title={title} />
+          <RecipeCard key={recipe.strName} type={type} recipe={recipe} title={title} />
         ))}
       </div>
       <Footer />
