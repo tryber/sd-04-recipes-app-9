@@ -15,7 +15,7 @@ const MainRecipes = ({ type, title }) => {
       fetchRecipes(data);
       setIsFetching(false);
     });
-  }, []);
+  }, [type]);
 
   if (isFetching) {
     return (
