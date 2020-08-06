@@ -5,13 +5,13 @@ const Login = () => {
   const [state, setState] = useState({ email: '', password: '' });
   const { email, password } = state;
 
-  const toSubmit = () => {
+  const toSubmit = (email) => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify({ email }));
   };
 
-  const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const checkEmail = (email) => email.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
 
   const checkPassword = (value) => value.length > 6;
 
@@ -43,7 +43,7 @@ const Login = () => {
           data-testid="login-submit-btn"
           type="button"
           disabled={!(checkPassword(password) && checkEmail(email))}
-          onClick={() => toSubmit()}
+          onClick={(email) => toSubmit(email)}
         >
           Entrar
         </button>
