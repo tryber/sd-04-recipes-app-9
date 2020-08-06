@@ -52,7 +52,7 @@ const Categories = ({ type }) => {
           data-testid={`${cat.strCategory}-category-filter`}
           type="button"
           onClick={(event) => handleChange(event.target.innerHTML)}
-          key={cat.strCategory} // retirar warning do console
+          key={cat.strCategory}
         >
           {cat.strCategory}
         </button>
