@@ -41,7 +41,7 @@ const Categories = ({ type }) => {
   return (
     <div>
       <button
-        data-testid="filter-by-all-btn"
+        data-testid="All-category-filter"
         type="button"
         onClick={(event) => handleChange(event.target.innerHTML)}
       >
