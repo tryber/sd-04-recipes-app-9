@@ -104,49 +104,40 @@
   width: 50%;
 }
 
+  
 .footer {
+  background: #c4c4c4;
+  bottom: 0;
+  height: 58px;
+  left: 0.1px;
   position: fixed;
+  top: 582px;
+  width: 360px;
 }
 
-/* .ExploreFood {
-align-items: flex-end;
-color: #000000;
-display: flex;
-font-family: Roboto;
-font-size: 32px;
-font-style: normal;
-font-weight: normal;
-height: 89px;
-left: 20px;
-line-height: 37px;
-position: absolute;
-top: 58px;
-width: 322px;
+.footer-drink {
+  height: 40px;
+  left: 16px;
+  position: absolute;
+  top: 9px;
+  width: 40px;
 }
 
-.ExploreDrinks {
-align-items: flex-end;
-color: #000000;
-display: flex;
-font-family: Roboto;
-font-size: 32px;
-font-style: normal;
-font-weight: normal;
-height: 89px;
-left: 19px;
-line-height: 37px;
-position: absolute;
-top: 173px;
-width: 322px;
+.footer-explore {
+  height: 40px;
+  left: 160px;
+  position: absolute;
+  top: 12px;
+  width: 40px;
 }
 
-.Explorer-Container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 85vh;
-  width: 500px;
-} */
+.footer-meal {
+  height: 40px;
+  left: 302px;
+  position: absolute;
+  top: 12px;
+  width: 40px;
+}
 
 @keyframes shake {
   0% {
