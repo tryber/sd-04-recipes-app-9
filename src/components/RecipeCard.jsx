@@ -6,7 +6,7 @@ function RecipeCard({ recipe, page, index }) {
   const path = {
     Meal: 'comidas',
     Drink: 'bebidas',
-  }
+  };
   const dataTestId = {
     main: { card: `${index}-recipe-card`, name: `${index}-card-name` },
     detail: { card: `${index}-recommendation-card`, name: `${index}-recommendation-name` },
