@@ -11,7 +11,10 @@ const Login = () => {
     localStorage.setItem('user', JSON.stringify({ email }));
   };
 
-  const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const checkEmail = (mail) => {
+    mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)
+    return mail && mail ==='string';
+  };
 
   const checkPassword = (value) => value.length > 6;
 
