@@ -56,11 +56,30 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
   </div>
 );
 
-const instructions = (recipe) => (
-  <div>
-    <h4>Instructions</h4>
-    <span data-testid="instructions">{recipe.strInstructions}</span>
-  </div>
+const showYoutubeVideo = (recipe) => {
+  const opts = { height: '200', width: '325' };
+  if (recipe.strYoutube) {
+    return (
+      <div data-testid="video">
+        <h4>Video</h4>
+        <YouTube videoId={recipe.strYoutube.split('=')[1]} opts={opts} />
+      </div>
+    );
+  }
+  return null;
+};
+
+const showRecommended = (recommendedRecipes, title) => (
+  <Fragment>
+    <h4>Recommended Recipes</h4>
+    <div>
+      {recommendedRecipes.map((recipe, index) => (
+        <span key={recipe.id}>
+          <RecipeCard recipe={recipe} title={title} page="detail" index={index} />
+        </span>
+      ))}
+    </div>
+  </Fragment>
 );
 
 const header = (recipe) => (
@@ -88,34 +107,15 @@ const saveIngredients = (type, id, checkedIngredients) => {
   localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
-const showYoutubeVideo = (recipe) => {
-  const opts = { height: '200', width: '325' };
-  if (recipe.strYoutube) {
-    return (
-      <div data-testid="video">
-        <h4>Video</h4>
-        <YouTube videoId={recipe.strYoutube.split('=')[1]} opts={opts} />
-      </div>
-    );
-  }
-  return null;
-};
-
-const showRecommended = (recommendedRecipes, title) => (
-  <Fragment>
-    <h4>Recommended Recipes</h4>
-    <div>
-      {recommendedRecipes.map((recipe, index) => (
-        <span key={recipe.id}>
-          <RecipeCard recipe={recipe} title={title} page="detail" index={index} />
-        </span>
-      ))}
-    </div>
-  </Fragment>
-);
-
 const showImage = (recipe) => (
   <img src={recipe.strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+);
+
+const instructions = (recipe) => (
+  <div>
+    <h4>Instructions</h4>
+    <span data-testid="instructions">{recipe.strInstructions}</span>
+  </div>
 );
 
 const RecipeDetails = ({ type, page, recommended }) => {
