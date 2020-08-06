@@ -38,16 +38,16 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
         console.log(isChecked);
         return (
           <li key={ingredient.name} data-testid={`${index}-ingredient-step`}>
-            <label
-              htmlFor={`${ingredient.name} - ${index}`}
-            >
+            <label htmlFor={`${ingredient.name} - ${index}`}>
               <input
                 type="checkbox"
                 id={`${ingredient.name} - ${index}`}
                 checked={isChecked}
                 onChange={(e) => saveIngredient(e, index, checkedIngredients, setChkIngredients)}
               />
-              <span>{ingredient.name} - {ingredient.quantity}</span>
+              <span>
+                {ingredient.name} - {ingredient.quantity}
+              </span>
             </label>
           </li>
         );
@@ -92,10 +92,7 @@ const header = (recipe) => (
         </span>
       </div>
       <div>
-        <ShareBtn
-          type={recipe.type === 'meal' ? 'comida' : 'bebida'}
-          id={recipe.id}
-        />
+        <ShareBtn type={recipe.type === 'meal' ? 'comida' : 'bebida'} id={recipe.id} />
       </div>
     </div>
   </div>
@@ -145,7 +142,12 @@ const RecipeDetails = ({ type, page, recommended }) => {
     );
   }, [id, type, recommended]);
 
-  if (recipes.length === 0 || recipes.length > 1) return <div><h3>Loading...</h3></div>;
+  if (recipes.length === 0 || recipes.length > 1)
+    return (
+      <div>
+        <h3>Loading...</h3>
+      </div>
+    );
 
   return (
     <div>
