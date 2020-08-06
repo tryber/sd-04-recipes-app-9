@@ -69,13 +69,13 @@ const showYoutubeVideo = (recipe) => {
   return null;
 };
 
-const showRecommended = (recommendedRecipes, title) => (
+const showRecommended = (recommendedRecipes) => (
   <Fragment>
     <h4>Recommended Recipes</h4>
     <div>
       {recommendedRecipes.map((recipe, index) => (
         <span key={recipe.id}>
-          <RecipeCard recipe={recipe} title={title} page="detail" index={index} />
+          <RecipeCard recipe={recipe} page="detail" index={index} />
         </span>
       ))}
     </div>
@@ -106,10 +106,6 @@ const saveIngredients = (type, id, checkedIngredients) => {
   inProgressRecipes[`${type}s`] = { ...inProgressRecipes[`${type}s`], [id]: checkedIngredients };
   localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
-
-const showImage = (recipe) => (
-  <img src={recipe.strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
-);
 
 const instructions = (recipe) => (
   <div>
@@ -153,7 +149,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
 
   return (
     <div>
-      {showImage(recipes[0])}
+      <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
       <div>
         {header(recipes[0])}
         {page === 'detail'
@@ -161,7 +157,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
           : showIngredientsListCheck(recipes[0], checkedIngredients, setChkIngredients)}
         {instructions(recipes[0])}
         {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
-        {page === 'detail' ? showRecommended(recommendedRecipes, title) : null}
+        {page === 'detail' ? showRecommended(recommendedRecipes) : null}
       </div>
     </div>
   );
