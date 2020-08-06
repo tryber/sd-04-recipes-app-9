@@ -5,10 +5,11 @@ import Footer from '../components/Footer';
 
 const Profile = () => {
   const emailUser = JSON.parse(localStorage.getItem('user'));
+  const email = emailUser ? emailUser.email : 'tereza@tereza.com';
   return (
     <div>
       <Header title="Perfil" />
-      <div data-testid="profile-email">{emailUser.email}</div>
+      <div data-testid="profile-email">{email}</div>
       <Link to="/receitas-feitas">
         <button data-testid="profile-done-btn" type="button">
           Receitas Feitas
