@@ -105,12 +105,16 @@
 }
 
 .footer {
-  background: #C4C4C4;
-  left: 0px;
-  height: 58px;
-  position: fixed;
-  top: 582px;
-  width: 360px;
+    align-items: center;
+    background-color: #f3a43d;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 61px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    width: 360px;
 }
 
 /* .ExploreFood {
