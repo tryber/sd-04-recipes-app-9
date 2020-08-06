@@ -7,6 +7,7 @@ import { getRecipeDetailsById, searchRecipesByName } from '../services/getRecipe
 import ShareBtn from '../components/ShareBtn';
 import dataNormalize from '../utils/dataNormalize';
 import RecipeCard from '../components/RecipeCard';
+import FavoriteIcon from '../components/FavoriteIcon';
 
 const showIngredientsList = (recipe) => (
   <div>
@@ -85,6 +86,7 @@ const showRecommended = (recommendedRecipes) => (
 const header = (recipe) => (
   <div>
     <div>
+      {console.log(recipe.type)}
       <div>
         <h3 data-testid="recipe-title">{recipe.strName}</h3>
         <span data-testid="recipe-category">
@@ -92,8 +94,9 @@ const header = (recipe) => (
         </span>
       </div>
       <div>
+        <FavoriteIcon recipe={recipe} />
         <ShareBtn
-          type={recipe.type === 'meal' ? 'comida' : 'bebida'}
+          type={recipe.type === 'Meal' ? 'comida' : 'bebida'}
           id={recipe.id}
         />
       </div>
