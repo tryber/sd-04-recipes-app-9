@@ -104,6 +104,10 @@
   width: 50%;
 }
 
+.footer {
+  position: fixed;
+}
+
 /* .ExploreFood {
 align-items: flex-end;
 color: #000000;
