@@ -114,11 +114,16 @@ const showRecommended = (recommendedRecipes, title) => (
   </Fragment>
 );
 
+const showImage = (recipe) => (
+  <img src={recipe.strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+);
+
 const RecipeDetails = ({ type, page, recommended }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
   const [checkedIngredients, setChkIngredients] = useState([]);
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
+  const title = type === 'meal' ? 'bebidas' : 'comidas';
 
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
@@ -152,10 +157,10 @@ const RecipeDetails = ({ type, page, recommended }) => {
       </div>
     );
   }
-  const title = type === 'meal' ? 'bebidas' : 'comidas';
+
   return (
     <div>
-      <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+      {showImage(recipes[0])}
       <div>
         {header(recipes[0])}
         {page === 'detail'
