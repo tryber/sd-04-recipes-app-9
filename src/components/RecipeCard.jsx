@@ -8,7 +8,7 @@ function RecipeCard({ recipe, title, page, index }) {
     detail: { card: `${index}-recommendation-card`, name: `${index}-recommendation-name` },
   };
   return (
-    <Link to={`${title.toLowerCase()}/${recipe.id}`}>
+    <Link to={`/${title.toLowerCase()}/${recipe.id}`}>
       <div className="card" data-testid={dataTestId[page].card}>
         <div className="image-div">
           <img

@@ -1,10 +1,12 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { getRecipeDetailsById } from '../services/getRecipes';
+import { getRecipeDetailsById, searchRecipesByName } from '../services/getRecipes';
 import ShareBtn from '../components/ShareBtn';
+import dataNormalize from '../utils/dataNormalize';
+import RecipeCard from '../components/RecipeCard';
 
 const showIngredientsList = (recipe) => (
   <div>
@@ -66,7 +68,7 @@ const header = (recipe) => (
     <div>
       <div>
         <h3 data-testid="recipe-title">{recipe.strName}</h3>
-        <span data-tesid="recipe-category">
+        <span data-testid="recipe-category">
           {recipe.strCategory} - {recipe.strAlcoholic}
         </span>
       </div>
@@ -99,10 +101,25 @@ const showYoutubeVideo = (recipe) => {
   return null;
 };
 
-const RecipeDetails = ({ type, page }) => {
+const showRecommended = (recommendedRecipes, title) => (
+  <Fragment>
+    <h4>Recommended Recipes</h4>
+    <div>
+      {recommendedRecipes.map((recipe, index) => (
+        <span key={recipe.id}>
+          <RecipeCard recipe={recipe} title={title} page="detail" index={index} />
+        </span>
+      ))}
+    </div>
+  </Fragment>
+);
+
+const RecipeDetails = ({ type, page, recommended }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
   const [checkedIngredients, setChkIngredients] = useState([]);
+  const [recommendedRecipes, setRecommendedRecipes] = useState([]);
+  const title = type === 'meal' ? 'bebidas' : 'comidas';
 
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
@@ -124,7 +141,10 @@ const RecipeDetails = ({ type, page }) => {
 
   useEffect(() => {
     getRecipeDetailsById(type, id).then((data) => fetchRecipes(data));
-  }, [id, type]);
+    searchRecipesByName(recommended, '').then((data) =>
+      setRecommendedRecipes(dataNormalize(data).slice(0, 6)),
+    );
+  }, [id, type, recommended]);
 
   if (recipes.length === 0 || recipes.length > 1) {
     return (
@@ -144,6 +164,7 @@ const RecipeDetails = ({ type, page }) => {
           : showIngredientsListCheck(recipes[0], checkedIngredients, setChkIngredients)}
         {instructions(recipes[0])}
         {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
+        {page === 'detail' ? showRecommended(recommendedRecipes, title) : null}
       </div>
     </div>
   );
@@ -152,6 +173,7 @@ const RecipeDetails = ({ type, page }) => {
 RecipeDetails.propTypes = {
   type: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
+  recommended: PropTypes.string.isRequired,
 };
 
 export default RecipeDetails;
