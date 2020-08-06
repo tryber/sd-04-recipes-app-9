@@ -150,13 +150,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
     );
   }, [id, type, recommended]);
 
-  if (recipes.length === 0 || recipes.length > 1) {
-    return (
-      <div className="progress preloader">
-        <div className="indeterminate" />
-      </div>
-    );
-  }
+  if (recipes.length === 0 || recipes.length > 1) return <div><h3>Loading...</h3></div>;
 
   return (
     <div>
