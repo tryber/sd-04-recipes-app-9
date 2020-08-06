@@ -4,12 +4,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Profile = () => {
-  const emailUser = JSON.parse(localStorage.getItem('user'));
-  console.log(emailUser.email)
+  let email = '';
+  if (localStorage.getItem('user') && email === '') {
+    email = JSON.parse(localStorage.getItem('user')).email;
+  }
+
   return (
     <div>
       <Header title="Perfil" />
-      <div data-testid="profile-email">{emailUser.email}</div>
+      <div data-testid="profile-email">{email}</div>
       <Link to="/receitas-feitas">
         <button data-testid="profile-done-btn" type="button">
           Receitas Feitas
@@ -21,11 +24,7 @@ const Profile = () => {
         </button>
       </Link>
       <Link to="/">
-        <button
-          data-testid="profile-logout-btn"
-          type="button"
-          onClick={() => localStorage.clear()}
-        >
+        <button data-testid="profile-logout-btn" type="button" onClick={() => localStorage.clear()}>
           Sair
         </button>
       </Link>
