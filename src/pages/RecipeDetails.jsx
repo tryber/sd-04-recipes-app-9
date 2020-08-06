@@ -151,6 +151,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
     <div>
       <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
       <div>
+        {/* simple comment */}
         {header(recipes[0])}
         {page === 'detail'
           ? showIngredientsList(recipes[0])
