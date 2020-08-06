@@ -10,7 +10,7 @@ import { RecipesContext } from '../context/RecipesContext';
 const Categories = ({ type }) => {
   const [categories, setCategories] = useState([]);
   const [filteredData, setFilteredData] = useState('');
-  const { fetchRecipes, setIsFetching } = useContext(RecipesContext);
+  const { fetchRecipes } = useContext(RecipesContext);
 
   useEffect(() => {
     searchByCategoriesBtn(type).then((data) => {
@@ -22,12 +22,10 @@ const Categories = ({ type }) => {
     if (filteredData) {
       searchByCategories(type, filteredData).then((data) => {
         fetchRecipes(data);
-        setIsFetching(false);
       });
     } else {
       searchRecipesByName(type, '').then((data) => {
         fetchRecipes(data);
-        setIsFetching(false);
       });
     }
   }, [filteredData]);
