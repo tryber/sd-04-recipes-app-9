@@ -22,18 +22,34 @@ const Routes = () => (
       />
       <Route
         exact
+        path="/comidas/:id"
+        render={(props) => (
+          <RecipeDetails {...props} type="meal" page="detail" recommended="cocktail" />
+        )}
+      />
+      <Route
+        exact path="/comidas/:id/in-progress"
+        render={(props) => (
+          <RecipeDetails {...props} type="meal" page="inProgress" recommended="cocktail" />
+        )}
+      />
+      <Route
+        exact
         path="/bebidas"
         render={(props) => <MainRecipes {...props} type="cocktail" title="Bebidas" />}
       />
       <Route
         exact
-        path="/comidas/:id"
-        render={(props) => <RecipeDetails {...props} type="meal" page="detail" />}
+        path="/bebidas/:id"
+        render={(props) => (
+          <RecipeDetails {...props} type="cocktail" page="detail" recommended="meal" />
+        )}
       />
       <Route
-        exact
-        path="/bebidas/:id"
-        render={(props) => <RecipeDetails {...props} type="cocktail" page="detail" />}
+        exact path="/bebidas/:id/in-progress"
+        render={(props) => (
+          <RecipeDetails {...props} type="cocktail" page="inProgress" recommended="meal" />
+        )}
       />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/explorar" component={MainExplorer} />
@@ -57,14 +73,6 @@ const Routes = () => (
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
       <Route exact path="/receitas-feitas" component={MadeRecipes} />
       <Route exact path="/receitas-favoritas" component={Favorites} />
-      <Route
-        exact path="/comidas/:id/in-progress"
-        render={(props) => <RecipeDetails {...props} type="meal" page="inProgress" />}
-      />
-      <Route
-        exact path="/bebidas/:id/in-progress"
-        render={(props) => <RecipeDetails {...props} type="cocktail" page="inProgress" />}
-      />
       <Route exact path="/" component={Login} />
       <Route component={NotFound} />
     </Switch>

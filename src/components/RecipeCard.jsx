@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function RecipeCard({ recipe, title, page, index }) {
+function RecipeCard({ recipe, page, index }) {
+  const path = {
+    Meal: 'comidas',
+    Drink: 'bebidas',
+  };
   const dataTestId = {
     main: { card: `${index}-recipe-card`, name: `${index}-card-name` },
     detail: { card: `${index}-recommendation-card`, name: `${index}-recommendation-name` },
   };
   return (
-    <Link to={`${title.toLowerCase()}/${recipe.id}`}>
+    <Link to={`/${path[recipe.type]}/${recipe.id}`}>
       <div className="card" data-testid={dataTestId[page].card}>
         <div className="image-div">
           <img
@@ -28,7 +32,6 @@ export default RecipeCard;
 
 RecipeCard.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  title: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
 };
