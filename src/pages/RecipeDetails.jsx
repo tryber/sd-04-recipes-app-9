@@ -123,7 +123,6 @@ const RecipeDetails = ({ type, page, recommended }) => {
   const { id } = useParams();
   const [checkedIngredients, setChkIngredients] = useState([]);
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
-  const title = type === 'meal' ? 'bebidas' : 'comidas';
 
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
