@@ -17,13 +17,9 @@ const Header = ({ type, title }) => {
             <img src={profileIcon} alt="profileIcon" data-testid="profile-top-btn" />
           </Link>
           <h3 data-testid="page-title">{title}</h3>
-          <input
-            src={searchIcon}
-            type="image"
-            data-testid="search-top-btn"
-            onClick={() => setSeeSearchbar(!seeSearchbar)}
-            alt="img-search"
-          />
+          <button type="button" onClick={() => setSeeSearchbar(!seeSearchbar)}>
+            <img src={searchIcon} alt="img-search" data-testid="search-top-btn" />
+          </button>
         </header>
         {seeSearchbar && <Searchbar type={type} />}
       </div>
@@ -43,6 +39,7 @@ const Header = ({ type, title }) => {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Header;
