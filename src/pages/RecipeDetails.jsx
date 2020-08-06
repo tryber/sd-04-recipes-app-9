@@ -119,7 +119,6 @@ const RecipeDetails = ({ type, page, recommended }) => {
   const { id } = useParams();
   const [checkedIngredients, setChkIngredients] = useState([]);
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
-  const title = type === 'meal' ? 'bebidas' : 'comidas';
 
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
@@ -153,7 +152,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
       </div>
     );
   }
-
+  const title = type === 'meal' ? 'bebidas' : 'comidas';
   return (
     <div>
       <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
