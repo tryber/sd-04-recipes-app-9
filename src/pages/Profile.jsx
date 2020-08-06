@@ -21,11 +21,7 @@ const Profile = () => {
         </button>
       </Link>
       <Link to="/">
-        <button
-          data-testid="profile-logout-btn"
-          type="button"
-          onClick={() => localStorage.clear()}
-        >
+        <button data-testid="profile-logout-btn" type="button" onClick={() => localStorage.clear()}>
           Sair
         </button>
       </Link>
@@ -35,4 +31,3 @@ const Profile = () => {
 };
 
 export default Profile;
-// pagina não reconhecida pelo avaliador
