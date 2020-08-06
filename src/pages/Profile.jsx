@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const Profile = () => {
   const emailUser = JSON.parse(localStorage.getItem('user'));
-  const email = emailUser ? emailUser.email : 'tereza@tereza.com';
+  const email = emailUser ? emailUser.email : '';
   return (
     <div>
       <Header title="Perfil" />
