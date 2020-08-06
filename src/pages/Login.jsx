@@ -5,10 +5,10 @@ const Login = () => {
   const [state, setState] = useState({ email: '', password: '' });
   const { email, password } = state;
 
-  const toSubmit = (x) => {
+  const toSubmit = () => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ x: email }));
+    localStorage.setItem('user', JSON.stringify({ email }));
   };
 
   const checkEmail = (mail) => mail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
