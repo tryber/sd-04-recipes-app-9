@@ -115,6 +115,14 @@
   width: 360px;
 }
 
+.detail-btn {
+  background-color: turquoise;
+  bottom: 0;
+  height: 40px;
+  position: fixed;
+  width: 100%;
+}
+
 .footer-drink {
   height: 40px;
   left: 16px;
