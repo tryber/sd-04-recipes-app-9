@@ -118,6 +118,8 @@
 .detail-btn {
   background-color: turquoise;
   bottom: 0;
+  font-size: 18px;
+  font-weight: 900;
   height: 40px;
   position: fixed;
   width: 100%;
