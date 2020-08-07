@@ -9,17 +9,17 @@ function Footer() {
   return (
     <footer data-testid="footer" className="footer">
       <div className="footer-drink">
-        <Link to="/bebidas">
+        <Link to="/bebidas" data-testid="link-Drink">
           <img src={drinkIcon} data-testid="drinks-bottom-btn" alt="Drink path" />
         </Link>
       </div>
       <div className="footer-explore">
-        <Link to="/explorar">
+        <Link to="/explorar" data-testid="link-Explore">
           <img src={exploreIcon} data-testid="explore-bottom-btn" alt="Explore path" />
         </Link>
       </div>
       <div className="footer-meal">
-        <Link to="/comidas">
+        <Link to="/comidas" data-testid="link-Meal">
           <img src={mealIcon} data-testid="food-bottom-btn" alt="Meal path" />
         </Link>
       </div>
