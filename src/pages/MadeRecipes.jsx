@@ -69,7 +69,7 @@ const MadeRecipes = ({ title, page }) => {
 
   return (
     <div>
-      <Header title="Receitas Feitas" />
+      <Header title={title} />
       {filterButtons(setFilter)}
       {showRecipes(filter, recipes, page, setRecipes)}
     </div>
@@ -79,6 +79,6 @@ const MadeRecipes = ({ title, page }) => {
 MadeRecipes.propTypes = {
   title: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
-}
+};
 
 export default MadeRecipes;
