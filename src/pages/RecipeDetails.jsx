@@ -57,6 +57,27 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
   </div>
 );
 
+const header = (recipe) => (
+  <div>
+    <div>
+      {console.log(recipe.type)}
+      <div>
+        <h3 data-testid="recipe-title">{recipe.strName}</h3>
+        <span data-testid="recipe-category">
+          {recipe.strCategory} - {recipe.strAlcoholic}
+        </span>
+      </div>
+      <div>
+        <FavoriteIcon recipe={recipe} />
+        <ShareBtn
+          type={recipe.type === 'Meal' ? 'comida' : 'bebida'}
+          id={recipe.id}
+        />
+      </div>
+    </div>
+  </div>
+);
+
 const showYoutubeVideo = (recipe) => {
   const opts = { height: '200', width: '325' };
   if (recipe.strYoutube) {
@@ -81,27 +102,6 @@ const showRecommended = (recommendedRecipes) => (
       ))}
     </div>
   </Fragment>
-);
-
-const header = (recipe) => (
-  <div>
-    <div>
-      {console.log(recipe.type)}
-      <div>
-        <h3 data-testid="recipe-title">{recipe.strName}</h3>
-        <span data-testid="recipe-category">
-          {recipe.strCategory} - {recipe.strAlcoholic}
-        </span>
-      </div>
-      <div>
-        <FavoriteIcon recipe={recipe} />
-        <ShareBtn
-          type={recipe.type === 'Meal' ? 'comida' : 'bebida'}
-          id={recipe.id}
-        />
-      </div>
-    </div>
-  </div>
 );
 
 const saveIngredients = (type, id, checkedIngredients) => {
@@ -154,7 +154,6 @@ const RecipeDetails = ({ type, page, recommended }) => {
     <div>
       <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
       <div>
-        {/* simple comment */}
         {header(recipes[0])}
         {page === 'detail'
           ? showIngredientsList(recipes[0])
