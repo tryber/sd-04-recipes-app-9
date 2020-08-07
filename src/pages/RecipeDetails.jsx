@@ -57,6 +57,10 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
   </div>
 );
 
+const showImage = (recipe) => (
+  <img src={recipe.strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+);
+
 const header = (recipe) => (
   <div>
     <div>
@@ -177,7 +181,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
 
   return (
     <div>
-      <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+      {showImage(recipes[0])}
       <div>
         {header(recipes[0])}
         {page === 'detail'
