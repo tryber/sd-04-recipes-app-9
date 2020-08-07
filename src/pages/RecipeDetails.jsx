@@ -191,9 +191,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
         {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
         {page === 'detail' ? showRecommended(recommendedRecipes) : null}
       </div>
-      {page === 'detail'
-        ? recipeInitiated(pathname, type, id)
-        : recipeFinished(recipes[0], checkedIngredients)}
+      {(page === 'detail') && recipeInitiated(pathname, type, id)}
     </div>
   );
 };
