@@ -15,18 +15,21 @@ describe('Test page Login', () => {
     renderWithRouter(<Login />);
 
     const emailInput = screen.getByTestId('email-input');
-    expect(emailInput).toBeInTheDocument();
     fireEvent.change(emailInput, { target: { value: 'email@email.com' } });
+
+    expect(emailInput).toBeInTheDocument();
     expect(emailInput).toHaveValue('email@email.com');
+
   });
 
   test('Test the password input.', () => {
     renderWithRouter(<Login />);
 
     const passwordInput = screen.getByTestId('password-input');
+    fireEvent.change(passwordInput, { target: { value: '1234567' } });
+
     expect(passwordInput).toBeInTheDocument();
-    fireEvent.change(passwordInput, { target: { value: '012345' } });
-    expect(passwordInput).toHaveValue('012345');
+    expect(passwordInput).toHaveValue('1234567');
   });
 
   test('Check if the submit button is disabled.', () => {
@@ -34,14 +37,13 @@ describe('Test page Login', () => {
 
     const emailInput = screen.getByTestId('email-input');
     const passwordInput = screen.getByTestId('password-input');
-
     const buttonSubmit = screen.getByTestId('login-submit-btn');
-    expect(buttonSubmit).toBeDisabled();
 
     fireEvent.change(emailInput, { target: { value: 'email@email.com' } });
-    expect(emailInput).toHaveValue('email@email.com');
-    expect(buttonSubmit).toBeDisabled();
     fireEvent.change(passwordInput, { target: { value: 12345 } });
+
+    expect(buttonSubmit).toBeDisabled();
+    expect(emailInput).toHaveValue('email@email.com');
     expect(buttonSubmit).toBeDisabled();
   });
 
@@ -55,10 +57,9 @@ describe('Test page Login', () => {
     expect(buttonSubmit).toBeDisabled();
 
     fireEvent.change(emailInput, { target: { value: 'email@email.com' } });
-    fireEvent.change(emailInput, { target: { value: 'email@email.com' } });
-
     expect(emailInput).toHaveValue('email@email.com');
     expect(buttonSubmit).toBeDisabled();
+
     fireEvent.change(passwordInput, { target: { value: 1234567 } });
     expect(buttonSubmit).not.toBeDisabled();
   });
