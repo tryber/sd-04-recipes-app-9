@@ -172,7 +172,7 @@ const recipeFinished = (history, recipe, checkedIngredients) => {
     >
       Finalizar Receita
     </button>
-  )
+  );
 };
 
 const renderButtons = (page, pathname, type, id, history, recipe, checkedIngredients) => (
