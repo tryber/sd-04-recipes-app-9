@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 const MainExplorer = () => (
   <div className="Explorer-Container">
     <Header title="Explorar" />
