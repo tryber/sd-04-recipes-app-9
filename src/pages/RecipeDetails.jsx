@@ -138,20 +138,50 @@ const recipeInitiated = (pathname, type, id) => {
   );
 };
 
-const recipeFinished = (recipe, checkedIngredients) => {
-  console.log(recipe);
-  return (
-    <h3>{checkedIngredients}</h3>
-  );
+const saveDoneRecipes = (recipe) => {
+  const { id, type, strArea, strCategory, strAlcoholic, strName, strThumb, tags } = recipe;
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+  const getType = { Meal: 'comida', Drink: 'bebida' };
+  doneRecipes.push({
+    id,
+    type: getType[type],
+    area: strArea || '',
+    category: strCategory || '',
+    alcoholicOrNot: strAlcoholic || '',
+    name: strName,
+    image: strThumb,
+    doneDate: new Date().toLocaleDateString('pt-BR'),
+    tags,
+  });
+  localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
 };
 
-const renderButtons = (page, pathname, type, id, recipe, checkedIngredients) => (
+const recipeFinished = (history, recipe, checkedIngredients) => {
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+  if (doneRecipes.some((doneRecipe) => doneRecipe.id === recipe.id)) return null;
+  return (
+    <button
+      type="button"
+      className="detail-btn"
+      data-testid="finish-recipe-btn"
+      disabled={!(recipe.ingredients.length === checkedIngredients.length)}
+      onClick={() => {
+        history.push('/receitas-feitas');
+        saveDoneRecipes(recipe);
+      }}
+    >
+      Finalizar Receita
+    </button>
+  )
+};
+
+const renderButtons = (page, pathname, type, id, history, recipe, checkedIngredients) => (
   page === 'detail'
     ? recipeInitiated(pathname, type, id)
-    : recipeFinished(recipe, checkedIngredients)
+    : recipeFinished(history, recipe, checkedIngredients)
 );
 
-const RecipeDetails = ({ type, page, recommended }) => {
+const RecipeDetails = ({ type, page, recommended, history }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -197,7 +227,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
         {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
         {page === 'detail' ? showRecommended(recommendedRecipes) : null}
       </div>
-      {renderButtons(page, pathname, type, id, recipes[0], checkedIngredients)}
+      {renderButtons(page, pathname, type, id, history, recipes[0], checkedIngredients)}
     </div>
   );
 };
@@ -206,6 +236,7 @@ RecipeDetails.propTypes = {
   type: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
   recommended: PropTypes.string.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withRouter(RecipeDetails);
