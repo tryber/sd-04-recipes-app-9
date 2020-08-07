@@ -175,7 +175,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
     searchRecipesByName(recommended, '').then((data) =>
       setRecommendedRecipes(dataNormalize(data).slice(0, 6)),
     );
-  }, [id, type, recommended]);
+  }, [id, type, recommended]); //só faz a atualizao quando alguns desses sao atualizados
 
   if (recipes.length === 0 || recipes.length > 1) return <div><h3>Loading...</h3></div>;
 
