@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState, Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
@@ -55,6 +55,10 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
       })}
     </ul>
   </div>
+);
+
+const showImage = (recipe) => (
+  <img src={recipe.strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
 );
 
 const header = (recipe) => (
@@ -117,9 +121,34 @@ const instructions = (recipe) => (
   </div>
 );
 
+const recipeInitiated = (pathname, type, id) => {
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+  if (doneRecipes.some((doneRecipe) => doneRecipe.id === id)) return null;
+  let isInProgress = false;
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (JSON.parse(localStorage.getItem('inProgressRecipes')) && inProgressRecipes[`${type}s`][id]) {
+    isInProgress = true;
+  }
+  return (
+    <Link to={`${pathname}/in-progress`}>
+      <button data-testid="start-recipe-btn" className="detail-btn">
+        {isInProgress ? 'Continuar Receita' : 'Iniciar Receita'}
+      </button>
+    </Link>
+  );
+};
+
+// const recipeFinished = (recipe, checkedIngredients) => {
+//   console.log(recipe);
+//   return (
+//     <h3>{checkedIngredients}</h3>
+//   );
+// };
+
 const RecipeDetails = ({ type, page, recommended }) => {
   const { recipes, fetchRecipes } = useContext(RecipesContext);
   const { id } = useParams();
+  const { pathname } = useLocation();
   const [checkedIngredients, setChkIngredients] = useState([]);
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
 
@@ -152,7 +181,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
 
   return (
     <div>
-      <img src={recipes[0].strThumb} className="img-detail" alt="pic" data-testid="recipe-photo" />
+      {showImage(recipes[0])}
       <div>
         {header(recipes[0])}
         {page === 'detail'
@@ -162,6 +191,7 @@ const RecipeDetails = ({ type, page, recommended }) => {
         {page === 'detail' ? showYoutubeVideo(recipes[0]) : null}
         {page === 'detail' ? showRecommended(recommendedRecipes) : null}
       </div>
+      {recipeInitiated(pathname, type, id)}
     </div>
   );
 };
@@ -172,4 +202,4 @@ RecipeDetails.propTypes = {
   recommended: PropTypes.string.isRequired,
 };
 
-export default RecipeDetails;
+export default withRouter(RecipeDetails);
