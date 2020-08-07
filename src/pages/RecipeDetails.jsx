@@ -74,6 +74,7 @@ const header = (recipe) => (
       <div>
         <FavoriteIcon recipe={recipe} />
         <ShareBtn
+          dataTestid="share-btn"
           type={recipe.type === 'Meal' ? 'comida' : 'bebida'}
           id={recipe.id}
         />
