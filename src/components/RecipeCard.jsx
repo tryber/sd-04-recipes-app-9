@@ -9,7 +9,7 @@ function RecipeCard({ recipe, page, index }) {
   };
   const dataTestId = {
     main: { card: `${index}-recipe-card`, name: `${index}-card-name` },
-    detail: { card: `${index}-recomendation-card`, name: `${index}-recommendation-name` },
+    detail: { card: `${index}-recomendation-card`, name: `${index}-recomendation-name` },
   };
   return (
     <Link to={`/${path[recipe.type]}/${recipe.id}`}>
