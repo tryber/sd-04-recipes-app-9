@@ -6,7 +6,7 @@ import FavoriteIcon from './FavoriteIcon';
 
 const showImage = (type, id, image, index) => (
   <Link to={`${type}/${id}`}>
-    <img src={image} alt="image-recipe" data-testid={`${index}-horizontal-image`} />
+    <img src={image} alt="recipe" data-testid={`${index}-horizontal-image`} />
   </Link>
 );
 
@@ -67,8 +67,8 @@ const favoriteRecipe = (recipe, recipes, index, setRecipes) => {
               </span>
             ))}
         </p>
+      </div>
     </div>
-  </div>
   );
 };
 
