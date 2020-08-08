@@ -72,7 +72,7 @@ const header = (recipe) => (
         </span>
       </div>
       <div>
-        <FavoriteIcon recipe={recipe} dataTestId="favorite-btn"/>
+        <FavoriteIcon recipe={recipe} dataTestId="favorite-btn" />
         <ShareBtn
           dataTestid="share-btn"
           type={recipe.type === 'Meal' ? 'comida' : 'bebida'}

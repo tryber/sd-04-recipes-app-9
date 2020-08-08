@@ -4,32 +4,40 @@ import { Link } from 'react-router-dom';
 import ShareBtn from './ShareBtn';
 import FavoriteIcon from './FavoriteIcon';
 
+const showImage = (type, id, image, index) => (
+  <Link to={`${type}/${id}`}>
+    <img src={image} alt="image-recipe" data-testid={`${index}-horizontal-image`} />
+  </Link>
+);
+
+const showName = (type, id, name, index) => (
+  <Link to={`${type}s/${id}`}>
+    <span data-testid={`${index}-horizontal-name`}>{name}</span>
+  </Link>
+);
+
 const doneRecipe = (recipe, index) => {
   const { name, type, alcoholicOrNot, image, area, category, doneDate, tags, id } = recipe;
   return (
     <div>
-      <Link to={`${type}/${id}`}>
-        <img src={image} alt={name} data-testid={`${index}-horizontal-image`} />
-      </Link>
+      {showImage(type, id, image, index)}
       <div>
         <span data-testid={`${index}-horizontal-top-text`}>
           {type === 'comida' ? `${area} - ${category}` : `${alcoholicOrNot}`}
           <ShareBtn dataTestid={`${index}-horizontal-share-btn`} type={type} id={id} />
-          <Link to={`${type}s/${id}`}>
-            <span data-testid={`${index}-horizontal-name`}>{name}</span>
-          </Link>
-          <p data-testid={`${index}-horizontal-done-date`}>{`Feita em ${doneDate}`}</p>
-          <p>
-            {tags &&
-              tags.map((tag) => (
-                <span key={tag} data-testid={`${index}-${tag}-horizontal-tag`}>
-                  {tag}
-                </span>
-              ))}
-          </p>
         </span>
+        <span>{showName(type, id, name, index)}</span>
+        <p data-testid={`${index}-horizontal-done-date`}>{`Feita em ${doneDate}`}</p>
+        <p>
+          {tags &&
+            tags.map((tag) => (
+              <span key={tag} data-testid={`${index}-${tag}-horizontal-tag`}>
+                {tag}
+              </span>
+            ))}
+        </p>
       </div>
-    </div>
+    </div >
   );
 };
 
@@ -37,31 +45,30 @@ const favoriteRecipe = (recipe, recipes, index, setRecipes) => {
   const { name, type, alcoholicOrNot, image, area, category, doneDate, tags, id } = recipe;
   return (
     <div>
-      <Link to={`${type}/${id}`}>
-        <img src={image} alt={name} data-testid={`${index}-horizontal-image`} />
-      </Link>
+      {showImage(type, id, image, index)}
       <div>
         <span data-testid={`${index}-horizontal-top-text`}>
           {type === 'comida' ? `${area} - ${category}` : `${alcoholicOrNot}`}
-          <ShareBtn dataTestid={`${index}-horizontal-share-btn`} type={type} id={id} />
-          <button
-            type="button"
-            onClick={() => setRecipes(recipes.filter((element) => element.id !== id))}
-          >
-            <FavoriteIcon dataTestId={`${index}-horizontal-favorite-btn`} recipe={recipe} />
-          </button>
-          <p data-testid={`${index}-horizontal-done-date`}>{`Feita em ${doneDate}`}</p>
-          <p>
-            {tags &&
-              tags.map((tag) => (
-                <span key={tag} data-testid={`${index}-${tag}-horizontal-tag`}>
-                  {tag}
-                </span>
-              ))}
-          </p>
         </span>
-      </div>
+        <ShareBtn dataTestid={`${index}-horizontal-share-btn`} type={type} id={id} />
+        <span>{showName(type, id, name, index)}</span>
+        <button
+          type="button"
+          onClick={() => setRecipes(recipes.filter((element) => element.id !== id))}
+        >
+          <FavoriteIcon dataTestId={`${index}-horizontal-favorite-btn`} recipe={recipe} />
+        </button>
+        <p data-testid={`${index}-horizontal-done-date`}>{`Feita em ${doneDate}`}</p>
+        <p>
+          {tags &&
+            tags.map((tag) => (
+              <span key={tag} data-testid={`${index}-${tag}-horizontal-tag`}>
+                {tag}
+              </span>
+            ))}
+        </p>
     </div>
+  </div>
   );
 };
 

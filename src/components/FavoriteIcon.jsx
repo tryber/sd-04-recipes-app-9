@@ -46,6 +46,7 @@ const FavoriteIcon = ({ recipe, dataTestId }) => {
 
 FavoriteIcon.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  dataTestId: PropTypes.string.isRequired,
 };
 
 export default FavoriteIcon;
