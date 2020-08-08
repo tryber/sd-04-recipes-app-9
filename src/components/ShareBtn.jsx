@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 
-const ShareBtn = ({ type, id }) => {
+const ShareBtn = ({ type, id, dataTestid }) => {
   const [share, setShare] = useState('');
   return (
     <div>
@@ -12,7 +12,7 @@ const ShareBtn = ({ type, id }) => {
           setShare('Link copiado!');
         }}
       >
-        <img data-testid="share-btn" src={shareIcon} alt="share" />
+        <img data-testid={dataTestid} src={shareIcon} alt="share" />
       </button>
       {share}
     </div>
