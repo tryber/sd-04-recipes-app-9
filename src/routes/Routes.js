@@ -73,7 +73,14 @@ const Routes = () => (
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
       <Route
         exact path="/receitas-feitas"
-        render={(props) => <MadeRecipes {...props} title="Receitas Feitas" page="doneRecipes" />}
+        render={(props) => (<MadeRecipes {...props} title="Receitas Feitas" page="doneRecipes" />
+      )}
+      />
+      <Route
+        exact path="/receitas-favoritas"
+        render={(props) => (
+        <MadeRecipes {...props} title="Receitas Favoritas" page="favoriteRecipes" />
+      )}
       />
       <Route exact path="/receitas-favoritas" component={Favorites} />
       <Route exact path="/" component={Login} />
