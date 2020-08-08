@@ -42,7 +42,7 @@ const doneRecipe = (recipe, index) => {
 };
 
 const favoriteRecipe = (recipe, recipes, index, setRecipes) => {
-  const { name, type, alcoholicOrNot, image, area, category, doneDate, tags, id } = recipe;
+  const { name, type, alcoholicOrNot, image, area, category, doneDate, id } = recipe;
   return (
     <div>
       {showImage(type, id, image, index)}
@@ -60,8 +60,8 @@ const favoriteRecipe = (recipe, recipes, index, setRecipes) => {
         </button>
         <p data-testid={`${index}-horizontal-done-date`}>{`Feita em ${doneDate}`}</p>
         <p>
-          {tags &&
-            tags.map((tag) => (
+          {recipe.tags &&
+            recipe.tags.map((tag) => (
               <span key={tag} data-testid={`${index}-${tag}-horizontal-tag`}>
                 {tag}
               </span>
