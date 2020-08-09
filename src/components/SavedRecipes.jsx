@@ -5,7 +5,7 @@ import ShareBtn from './ShareBtn';
 import FavoriteIcon from './FavoriteIcon';
 
 const showImage = (type, id, image, index) => (
-  <Link to={`${type}/${id}`}>
+  <Link to={`${type}s/${id}`}>
     <img src={image} alt="recipe" data-testid={`${index}-horizontal-image`} />
   </Link>
 );
