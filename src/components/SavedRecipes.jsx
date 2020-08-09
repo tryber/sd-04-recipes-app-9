@@ -6,7 +6,7 @@ import FavoriteIcon from './FavoriteIcon';
 
 const showImage = (type, id, image, index) => (
   <Link to={`${type}s/${id}`}>
-    <img src={image} alt="recipe" data-testid={`${index}-horizontal-image`} />
+    <img src={image} alt="recipe" data-testid={`${index}-horizontal-image`} className="done-img" />
   </Link>
 );
 
@@ -19,7 +19,7 @@ const showName = (type, id, name, index) => (
 const doneRecipe = (recipe, index) => {
   const { name, type, alcoholicOrNot, image, area, category, doneDate, tags, id } = recipe;
   return (
-    <div>
+    <div className="done-card">
       {showImage(type, id, image, index)}
       <div>
         <span data-testid={`${index}-horizontal-top-text`}>
@@ -44,7 +44,7 @@ const doneRecipe = (recipe, index) => {
 const favoriteRecipe = (recipe, recipes, index, setRecipes) => {
   const { name, type, alcoholicOrNot, image, area, category, doneDate, id } = recipe;
   return (
-    <div>
+    <div className="done-card">
       {showImage(type, id, image, index)}
       <div>
         <span data-testid={`${index}-horizontal-top-text`}>
