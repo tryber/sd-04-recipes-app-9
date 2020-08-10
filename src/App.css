@@ -149,6 +149,17 @@
   width: 40px;
 }
 
+.done-img {
+  height: 150px;
+}
+
+.done-card {
+  border: 1px solid black;
+  margin: 10px 5px;
+  padding: 10px;
+  width: 200px;
+}
+
 @keyframes shake {
   0% {
     transform: rotate(5deg);

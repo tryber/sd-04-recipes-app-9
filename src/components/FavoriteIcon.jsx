@@ -27,7 +27,7 @@ const saveFavorite = (recipe, setFavoriteIcon) => {
   }
 };
 
-const FavoriteIcon = ({ recipe }) => {
+const FavoriteIcon = ({ recipe, dataTestId }) => {
   const [favoriteIcon, setFavoriteIcon] = useState(whiteHeartIcon);
 
   useEffect(() => {
@@ -39,13 +39,14 @@ const FavoriteIcon = ({ recipe }) => {
 
   return (
     <button onClick={() => saveFavorite(recipe, setFavoriteIcon)}>
-      <img data-testid="favorite-btn" src={favoriteIcon} alt="favorite" />
+      <img data-testid={dataTestId} src={favoriteIcon} alt="favorite" />
     </button>
   );
 };
 
 FavoriteIcon.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  dataTestId: PropTypes.string.isRequired,
 };
 
 export default FavoriteIcon;
