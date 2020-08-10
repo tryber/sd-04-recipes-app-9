@@ -1,11 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import { randomSurpriseMe } from '../services/getRecipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const ExplorerDrinksOrFoods = ({ type, title }) => {
   const direction = useLocation().pathname;
+  const history = useHistory();
+  const handleChange = () => {
+    let idMealOurDrink = 'idDrink';
+    if (type === 'meal') {
+      idMealOurDrink = 'idMeal';
+      randomSurpriseMe(type).then((data) =>
+        history.push(`/comidas/${(data.drinks || data.meals)[0][idMealOurDrink]}`),
+      );
+    } else {
+      randomSurpriseMe(type).then((data) =>
+        history.push(`/bebidas/${(data.drinks || data.meals)[0][idMealOurDrink]}`),
+      );
+    }
+  };
+
   if (direction === '/explorar/comidas') {
     return (
       <div>
@@ -22,7 +38,7 @@ const ExplorerDrinksOrFoods = ({ type, title }) => {
                 Por Local de Origem
               </button>
             </Link>
-            <button type="button" data-testid="explore-surprise" onClick={''}>
+            <button type="button" data-testid="explore-surprise" onClick={handleChange}>
               Me Surpreenda!
             </button>
           </div>
@@ -41,7 +57,7 @@ const ExplorerDrinksOrFoods = ({ type, title }) => {
               Por Ingredientes
             </button>
           </Link>
-          <button type="button" data-testid="explore-surprise" onClick={''}>
+          <button type="button" data-testid="explore-surprise" onClick={handleChange}>
             Me Surpreenda!
           </button>
         </div>
