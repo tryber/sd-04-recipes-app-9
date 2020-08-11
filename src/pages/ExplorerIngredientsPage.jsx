@@ -53,7 +53,7 @@ const ExplorerIngredientsPage = ({ type, target, history }) => {
       </div>
       <Footer />
     </div>
-  )
+  );
 };
 
 ExplorerIngredientsPage.propTypes = {
