@@ -50,6 +50,7 @@ const dataNormalize = (recipes) => {
   } else {
     type = 'Drink';
   }
+  console.log(data);
   return data.map((recipe) => normalizeRecipe(recipe, type));
 };
 
