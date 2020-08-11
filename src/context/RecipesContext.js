@@ -18,11 +18,7 @@ const RecipesProvider = ({ children }) => {
     fetchRecipes,
   };
 
-  return (
-    <RecipesContext.Provider value={context}>
-      {children}
-    </RecipesContext.Provider>
-  );
+  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
 
 RecipesProvider.propTypes = { children: PropTypes.node.isRequired };
