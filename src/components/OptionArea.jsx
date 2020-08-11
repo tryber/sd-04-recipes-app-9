@@ -23,11 +23,11 @@ const OptionArea = () => {
     <div>
       <select
         data-testid="explore-by-area-dropdown"
-        onClick={(event) => handleChange(event.target.value)}
+        onChange={(event) => handleChange(event.target.value)}
       >
         <option data-testid="All-option">All</option>
         {areas.map((e) => (
-          <option data-testid={`${e.strArea}-option`}>{e.strArea}​</option>
+          <option value={e.strArea} data-testid={`${e.strArea}-option`}>{e.strArea}​</option>
         ))}
       </select>
     </div>
