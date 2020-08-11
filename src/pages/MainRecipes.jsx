@@ -8,13 +8,18 @@ import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 
 const MainRecipes = ({ type, title }) => {
-  const { isFetching, setIsFetching, recipes, fetchRecipes } = useContext(RecipesContext);
+  const {
+    isFetching, setIsFetching, recipes, fetchRecipes, explore, setExplore,
+  } = useContext(RecipesContext);
 
   useEffect(() => {
-    searchRecipesByName(type, '').then((data) => {
-      fetchRecipes(data);
-      setIsFetching(false);
-    });
+    if (!explore) {
+      searchRecipesByName(type, '').then((data) => {
+        fetchRecipes(data);
+        setIsFetching(false);
+      });
+    }
+    setExplore(false);
   }, [type]);
 
   if (isFetching) {
@@ -27,6 +32,7 @@ const MainRecipes = ({ type, title }) => {
 
   return (
     <div>
+      {console.log('Explore ', explore)}
       <Header title={title} type={type} />
       <Categories type={type} />
       <div className="main">

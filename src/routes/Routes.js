@@ -67,8 +67,18 @@ const Routes = () => (
           <ExplorerDrinksOrFoods {...props} type="cocktail" title="Explorar Bebidas" />
         )}
       />
-      <Route exact path="/explorar/comidas/ingredientes" component={ExplorerIngredientsPage} />
-      <Route exact path="/explorar/bebidas/ingredientes" component={ExplorerIngredientsPage} />
+      <Route
+        exact path="/explorar/comidas/ingredientes"
+        render={(props) => (
+          <ExplorerIngredientsPage {...props} type="meal" target="comidas" />
+        )}
+      />
+      <Route
+        exact path="/explorar/bebidas/ingredientes"
+        render={(props) => (
+          <ExplorerIngredientsPage {...props} type="cocktail" target="bebidas" />
+        )}
+      />
       <Route exact path="/explorar/comidas/area" component={ExplorerAreaPage} />
       <Route exact path="/explorar/bebidas/area" component={NotFound} />
       <Route

@@ -7,6 +7,7 @@ export const RecipesContext = createContext();
 const RecipesProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [recipes, setRecipes] = useState([]);
+  const [explore, setExplore] = useState(false);
 
   const fetchRecipes = (data) => setRecipes(dataNormalize(data).slice(0, 12));
 
@@ -16,6 +17,8 @@ const RecipesProvider = ({ children }) => {
     recipes,
     setRecipes,
     fetchRecipes,
+    explore,
+    setExplore,
   };
 
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;

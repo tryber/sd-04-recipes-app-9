@@ -38,7 +38,18 @@ export const listAllArea = (type) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
 
+export const listIngredients = (type) =>
+  fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?i=list`).then((response) =>
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
+  );
+
 export const searchByArea = (area) =>
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`).then((response) =>
     response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
+
+export const searchRecipesByIngredient = (type, ingredient) =>
+  fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?i=${ingredient}`).then((response) =>
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
+  );
+
