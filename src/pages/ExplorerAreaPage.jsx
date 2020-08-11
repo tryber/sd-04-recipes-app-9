@@ -13,7 +13,7 @@ const ExplorerAreaPage = () => {
       <Header title="Explorar Origem" type="meal" />
       <OptionArea />
       {recipes.map((recipe, index) => (
-        <RecipeCard key={recipe.strArea} recipe={recipe} index={index} page="main" />
+        <RecipeCard key={recipe.id} recipe={recipe} index={index} page="main" />
       ))}
       <Footer />
     </div>

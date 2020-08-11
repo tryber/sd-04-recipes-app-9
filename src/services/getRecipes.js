@@ -35,10 +35,10 @@ export const randomSurpriseMe = (type) =>
 
 export const listAllArea = (type) =>
   fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?a=list`).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
 
 export const searchByArea = (area) =>
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+    response.json().then((data) => (response.ok ? Promise.resolve(data) : Promise.reject(data))),
   );
