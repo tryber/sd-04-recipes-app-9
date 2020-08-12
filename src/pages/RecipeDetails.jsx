@@ -36,7 +36,6 @@ const showIngredientsListCheck = (recipe, checkedIngredients, setChkIngredients)
     <ul>
       {recipe.ingredients.map((ingredient, index) => {
         const isChecked = checkedIngredients.includes(index);
-        console.log(isChecked);
         return (
           <li key={ingredient.name} data-testid={`${index}-ingredient-step`}>
             <label
@@ -99,9 +98,9 @@ const showYoutubeVideo = (recipe) => {
 const showRecommended = (recommendedRecipes) => (
   <Fragment>
     <h4>Recommended Recipes</h4>
-    <div>
+    <div className="recommended">
       {recommendedRecipes.map((recipe, index) => (
-        <span key={recipe.id}>
+        <span key={recipe.id} className="recommended-margin">
           <RecipeCard recipe={recipe} page="detail" index={index} />
         </span>
       ))}
@@ -219,7 +218,7 @@ const RecipeDetails = ({ type, page, recommended, history }) => {
   return (
     <div>
       {showImage(recipes[0])}
-      <div>
+      <div className="detail-page">
         {header(recipes[0])}
         {page === 'detail'
           ? showIngredientsList(recipes[0])

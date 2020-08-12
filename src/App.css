@@ -104,6 +104,16 @@
   width: 50%;
 }
 
+.recommended {
+  display: flex;
+  padding: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+.recommended-margin {
+  margin: 6px;
+}
   
 .footer {
   background: #c4c4c4;
@@ -113,6 +123,10 @@
   position: fixed;
   top: 582px;
   width: 360px;
+}
+
+.detail-page {
+  margin: 15px;
 }
 
 .detail-btn {
