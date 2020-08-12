@@ -63,7 +63,6 @@ const showImage = (recipe) => (
 const header = (recipe) => (
   <div>
     <div>
-      {console.log(recipe.type)}
       <div>
         <h3 data-testid="recipe-title">{recipe.strName}</h3>
         <span data-testid="recipe-category">
